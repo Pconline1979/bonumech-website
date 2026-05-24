@@ -10,8 +10,8 @@
   <style>
     /* HERO */
     .hero { background: #0d0d0d; display: flex; min-height: 480px; position: relative; overflow: hidden; }
-    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: .4; }
-    .hero-overlay { position: absolute; inset: 0; background: rgba(0,0,0,.65); z-index: 1; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+    .hero-overlay { display: none; }
     .hero-content { position: relative; z-index: 2; display: flex; width: 100%; }
     .hero-left { flex: 1; padding: 64px 48px 56px; display: flex; flex-direction: column; justify-content: center; }
     .hero-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
@@ -19,8 +19,9 @@
     .eyebrow-text { color: #888; font-size: 11px; letter-spacing: 1.5px; }
     .hero-h1 { font-size: 42px; font-weight: 500; line-height: 1.15; color: var(--text-white); margin-bottom: 6px; }
     .hero-h1 em { color: var(--orange); font-style: normal; }
-    .hero-h2 { font-size: 42px; font-weight: 500; line-height: 1.15; color: #555; margin-bottom: 22px; }
-    .hero-desc { color: #888; font-size: 14px; line-height: 1.85; max-width: 420px; margin-bottom: 32px; }
+    .hero-eyebrow .eyebrow-text { color: #ccc; }
+    .hero-h2 { font-size: 42px; font-weight: 500; line-height: 1.15; color: #aaa; margin-bottom: 22px; }
+    .hero-desc { color: #ccc; font-size: 14px; line-height: 1.85; max-width: 420px; margin-bottom: 32px; }
     .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
     .hero-trust { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
     .trust-faces { display: flex; }
@@ -89,13 +90,14 @@
   </style>
 </head>
 <body>
+<div class="site-wrapper">
 
 <div id="nav-placeholder"></div>
 
 <!-- HERO -->
 <div class="hero">
   <video class="hero-video" autoplay muted loop playsinline>
-    <source src="https://www.bonumech.com/videos/video%20site_1.mp4" type="video/mp4">
+    <source src="videos/bonumech_intro.mp4" type="video/mp4">
   </video>
   <div class="hero-overlay"></div>
   <div class="hero-content">
@@ -245,5 +247,6 @@
 
 <div id="footer-placeholder"></div>
 <script src="js/common.js"></script>
+</div>
 </body>
 </html>

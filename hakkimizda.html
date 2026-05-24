@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkımızda — Bonumech Teknoloji A.Ş.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    .hero-split{display:flex;gap:36px;align-items:center;}
+    .hero-split-left{flex:1;}
+    .hero-stats{width:240px;display:flex;flex-direction:column;gap:10px;}
+    .hstat{background:#1a1a1a;border:0.5px solid #222;border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
+    .hstat-icon{width:36px;height:36px;border-radius:8px;background:#2a1a0e;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--orange);flex-shrink:0;}
+    .hstat-num{font-size:18px;font-weight:500;color:var(--text-light);}
+    .hstat-lbl{font-size:10px;color:#555;margin-top:1px;}
+    .story-split{display:flex;gap:40px;}
+    .story-main{flex:1;}
+    .story-side{width:210px;display:flex;flex-direction:column;gap:12px;}
+    .fact-card{background:var(--light-bg-2);border-radius:10px;padding:16px;border:0.5px solid var(--light-border);}
+    .fact-label{font-size:10px;color:var(--orange);letter-spacing:1px;margin-bottom:4px;}
+    .fact-val{font-size:13px;font-weight:500;color:var(--text-dark);}
+    .fact-sub{font-size:11px;color:var(--text-gray-2);margin-top:2px;}
+    .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .val-card{background:#fff;border-radius:12px;padding:22px;border:0.5px solid var(--light-border);}
+    .vc-icon{width:44px;height:44px;border-radius:10px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--orange);margin-bottom:14px;}
+    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
+    .team-card{background:var(--dark-3);border-radius:10px;border:0.5px solid var(--border-dark-2);overflow:hidden;}
+    .tc-avatar{height:80px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:500;}
+    .tc-body{padding:12px;}
+    .tc-name{font-size:12px;font-weight:500;color:#ddd;margin-bottom:2px;}
+    .tc-role{font-size:10px;color:#555;}
+    @media(max-width:768px){.hero-split,.story-split{flex-direction:column;}.hero-stats,.story-side{width:100%;}.val-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:repeat(2,1fr);}}
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<div class="page-hero" style="padding-bottom:56px;">
+  <div class="eye">HAKKIMIZDA</div>
+  <div class="hero-split" style="margin-top:24px;">
+    <div class="hero-split-left">
+      <h1 style="font-size:32px;">Türkiye'nin yerli<br><em>intralogistik</em> üreticisi</h1>
+      <p style="margin-top:14px;">Bonumech Teknoloji A.Ş., Kocaeli'nde kurulu, ASRS ve intralogistik sistemleri tasarlayıp üreten mühendislik şirketidir. Her sistemimizi kendi fabrikamızda, kendi mühendislerimizle yapıyoruz.</p>
+    </div>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-icon"><i class="ti ti-calendar"></i></div><div><div class="hstat-num">10+</div><div class="hstat-lbl">Yıl sektör deneyimi</div></div></div>
+      <div class="hstat"><div class="hstat-icon"><i class="ti ti-package"></i></div><div><div class="hstat-num">80+</div><div class="hstat-lbl">Tamamlanan proje</div></div></div>
+      <div class="hstat"><div class="hstat-icon"><i class="ti ti-users"></i></div><div><div class="hstat-num">30+</div><div class="hstat-lbl">Uzman çalışan</div></div></div>
+      <div class="hstat"><div class="hstat-icon"><i class="ti ti-world"></i></div><div><div class="hstat-num">3</div><div class="hstat-lbl">Ülkede aktif proje</div></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="story-split">
+    <div class="story-main">
+      <div class="sec-eye">HİKAYEMİZ</div>
+      <div class="sec-title">Mühendislik tutkusundan doğan bir şirket</div>
+      <p style="font-size:13px;color:var(--text-gray);line-height:1.9;margin-bottom:14px;">Bonumech Teknoloji, depo otomasyonu alanında yerli ve özgün çözümlere duyulan ihtiyaçtan doğdu. Kurucularımız, yıllarca yurt dışı teknolojilerine bağımlı kalan Türk endüstrisine kendi ürettiğimiz sistemleri sunmak amacıyla bir araya geldi.</p>
+      <p style="font-size:13px;color:var(--text-gray);line-height:1.9;">Kocaeli'ndeki fabrikamızda her ürün, baştan sona tasarlanıp üretiliyor. Mekanik tasarımdan yazılım entegrasyonuna, kurulumdan devreye almaya kadar tüm süreç tek çatı altında yönetiliyor.</p>
+    </div>
+    <div class="story-side">
+      <div class="fact-card"><div class="fact-label">KURULUŞ</div><div class="fact-val">Kocaeli, Türkiye</div><div class="fact-sub">Başiskele Organize Sanayi</div></div>
+      <div class="fact-card"><div class="fact-label">SEKTÖRLER</div><div class="fact-val">Otomotiv, FMCG</div><div class="fact-sub">Lojistik, İmalat</div></div>
+      <div class="fact-card"><div class="fact-label">SERTİFİKASYON</div><div class="fact-val">ISO 9001:2015</div><div class="fact-sub">Kalite yönetim sistemi</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-gray">
+  <div class="sec-eye">DEĞERLERİMİZ</div>
+  <div class="sec-title">Bizi biz yapan ilkeler</div>
+  <div class="val-grid" style="margin-top:24px;">
+    <div class="val-card"><div class="vc-icon"><i class="ti ti-bulb"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Mühendislik önce gelir</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Her projede doğru mühendislik kararını veririz. Kısa yolları değil, kalıcı çözümleri seçeriz.</div></div>
+    <div class="val-card"><div class="vc-icon"><i class="ti ti-shield-check"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Söz verdiğimizi yaparız</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Teslim tarihlerine ve teknik spesifikasyonlara bağlılık şirket kültürümüzün temelidir.</div></div>
+    <div class="val-card"><div class="vc-icon"><i class="ti ti-refresh"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Sürekli gelişim</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Her projeden öğrenir, her ürünü bir öncekinden daha iyi yaparız.</div></div>
+    <div class="val-card"><div class="vc-icon"><i class="ti ti-users"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Müşteri ortaklığı</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Müşterilerimizi sadece alıcı değil, çözüm ortağı olarak görürüz.</div></div>
+    <div class="val-card"><div class="vc-icon"><i class="ti ti-flag"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Yerli üretim gururu</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Türkiye'de tasarlayıp Türkiye'de üretiyoruz.</div></div>
+    <div class="val-card"><div class="vc-icon"><i class="ti ti-headset"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Satış sonrası destek</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Sistem devreye girdikten sonra da yanınızdayız. Bakım ve teknik destek garantisi.</div></div>
+  </div>
+</div>
+
+<div class="section-dark">
+  <div class="sec-eye">EKİBİMİZ</div>
+  <div class="sec-title-light">Arkamızdaki mühendisler</div>
+  <div class="sec-sub-light">Mekanik tasarımdan yazılıma, proje yönetiminden sahaya — disiplinlerarası bir ekip.</div>
+  <div class="team-grid">
+    <div class="team-card"><div class="tc-avatar" style="background:#1a2230;color:#4a8abd;">MK</div><div class="tc-body"><div class="tc-name">Genel Müdür</div><div class="tc-role">Kurucu & CEO</div></div></div>
+    <div class="team-card"><div class="tc-avatar" style="background:#1a2620;color:#4abd8a;">AY</div><div class="tc-body"><div class="tc-name">Baş Mühendis</div><div class="tc-role">Mekanik Tasarım</div></div></div>
+    <div class="team-card"><div class="tc-avatar" style="background:#25181e;color:#bd4a8a;">ST</div><div class="tc-body"><div class="tc-name">Yazılım Lid.</div><div class="tc-role">WMS & Otomasyon</div></div></div>
+    <div class="team-card"><div class="tc-avatar" style="background:#22201a;color:#bd8a4a;">RD</div><div class="tc-body"><div class="tc-name">Proje Müdürü</div><div class="tc-role">Saha & Devreye Alma</div></div></div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div>
+    <div class="cta-badge"><i class="ti ti-briefcase"></i> Kariyer fırsatları</div>
+    <div class="cta-title">Ekibimize katılmak ister misiniz?</div>
+    <div class="cta-sub">Mühendislik tutkusu olan, gelişmeye açık kişileri arıyoruz.</div>
+  </div>
+  <div class="cta-actions">
+    <a href="iletisim.html" class="btn btn-primary" style="justify-content:center;">İletişime Geçin</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="js/common.js"></script>
+</body>
+</html>

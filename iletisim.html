@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İletişim — Bonumech Teknoloji A.Ş.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    .contact-wrap { display: flex; gap: 36px; align-items: flex-start; }
+    .form-side { flex: 1; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 5px; }
+    .form-group.full { grid-column: span 2; }
+    label { font-size: 11px; color: var(--text-dimmer); font-weight: 500; }
+    input, select, textarea {
+      background: var(--light-bg-2); border: 0.5px solid var(--light-border-2);
+      border-radius: 7px; padding: 11px 13px; font-size: 13px; color: var(--text-dark);
+      outline: none; font-family: var(--font); transition: border-color .2s;
+    }
+    input:focus, select:focus, textarea:focus { border-color: var(--orange); }
+    textarea { height: 100px; resize: vertical; }
+    .form-actions { display: flex; gap: 10px; margin-top: 18px; }
+    .btn-wa { background: #25d366; color: #fff; display: inline-flex; align-items: center; gap: 6px; }
+    .info-side { width: 230px; display: flex; flex-direction: column; gap: 12px; }
+    .info-card { background: var(--light-bg-2); border-radius: 10px; padding: 18px; border: 0.5px solid var(--light-border); }
+    .info-card-title { font-size: 10px; color: var(--orange); letter-spacing: 1px; margin-bottom: 12px; }
+    .info-row { display: flex; align-items: flex-start; gap: 9px; margin-bottom: 10px; }
+    .info-row:last-child { margin-bottom: 0; }
+    .info-row i { color: var(--orange); font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+    .info-row-text { font-size: 11px; color: var(--text-gray); line-height: 1.55; }
+    .info-row-text strong { color: var(--text-dark); font-weight: 500; display: block; }
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+    .hour-box { background: #fff; border-radius: 6px; padding: 8px; border: 0.5px solid var(--light-border); }
+    .hour-day { font-size: 9px; color: var(--text-gray-2); }
+    .hour-time { font-size: 11px; color: var(--text-dark); font-weight: 500; margin-top: 2px; }
+    .map-box { background: var(--light-bg-2); border-radius: 10px; overflow: hidden; border: 0.5px solid var(--light-border); }
+    .map-box iframe { width: 100%; height: 200px; border: none; display: block; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .faq-item { background: var(--light-bg-2); border-radius: 8px; padding: 16px; border: 0.5px solid var(--light-border); }
+    .faq-q { font-size: 12px; font-weight: 500; color: var(--text-dark); margin-bottom: 6px; display: flex; align-items: flex-start; gap: 6px; }
+    .faq-q i { color: var(--orange); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+    .faq-a { font-size: 11px; color: var(--text-gray-2); line-height: 1.65; }
+    @media (max-width: 768px) { .contact-wrap { flex-direction: column; } .form-grid { grid-template-columns: 1fr; } .form-group.full { grid-column: span 1; } .info-side { width: 100%; } .faq-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="eye">İLETİŞİM</div>
+  <h1>Size <em>48 saat</em> içinde<br>dönüş garantisi</h1>
+  <p>Proje talepleriniz, teknik sorularınız veya genel bilgi için formu doldurun. Uzman ekibimiz en kısa sürede sizinle iletişime geçecek.</p>
+</div>
+
+<div class="section">
+  <div class="contact-wrap">
+    <div class="form-side">
+      <h2 style="font-size:17px;font-weight:500;color:var(--text-dark);margin-bottom:5px;">Bize yazın</h2>
+      <p style="font-size:12px;color:var(--text-gray-2);margin-bottom:22px;">Tüm alanları doldurunuz. Konu seçmeniz yanıt sürenizi kısaltır.</p>
+      <form action="mailto:info@bonumech.com" method="post" enctype="text/plain">
+        <div class="form-grid">
+          <div class="form-group"><label for="ad">Ad Soyad *</label><input type="text" id="ad" name="ad" placeholder="Adınız Soyadınız" required></div>
+          <div class="form-group"><label for="sirket">Şirket Adı</label><input type="text" id="sirket" name="sirket" placeholder="Şirket Adı"></div>
+          <div class="form-group"><label for="email">E-posta *</label><input type="email" id="email" name="email" placeholder="ornek@sirket.com" required></div>
+          <div class="form-group"><label for="tel">Telefon</label><input type="tel" id="tel" name="tel" placeholder="+90 5XX XXX XX XX"></div>
+          <div class="form-group full">
+            <label for="konu">Konu *</label>
+            <select id="konu" name="konu" required>
+              <option value="">Konu seçiniz...</option>
+              <option>ASRS Sistemi Talebi</option>
+              <option>Shuttle Sistemi Talebi</option>
+              <option>Anahtar Teslim Proje</option>
+              <option>Teknik Destek</option>
+              <option>Genel Bilgi</option>
+            </select>
+          </div>
+          <div class="form-group full"><label for="mesaj">Mesajınız *</label><textarea id="mesaj" name="mesaj" placeholder="Projeniz veya ihtiyacınız hakkında kısaca bilgi verin..." required></textarea></div>
+        </div>
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Gönder <i class="ti ti-arrow-right"></i></button>
+          <a href="https://wa.me/902623496647" class="btn btn-wa" target="_blank"><i class="ti ti-brand-whatsapp"></i> WhatsApp</a>
+        </div>
+        <p style="font-size:10px;color:#bbb;margin-top:10px;">* zorunlu alan · Bilgileriniz üçüncü taraflarla paylaşılmaz.</p>
+      </form>
+    </div>
+
+    <div class="info-side">
+      <div class="info-card">
+        <div class="info-card-title">İLETİŞİM BİLGİLERİ</div>
+        <div class="info-row"><i class="ti ti-phone"></i><div class="info-row-text"><strong>+90 262 349 66 47</strong>Telefon & Faks</div></div>
+        <div class="info-row"><i class="ti ti-mail"></i><div class="info-row-text"><strong>info@bonumech.com</strong>Genel sorular</div></div>
+        <div class="info-row"><i class="ti ti-map-pin"></i><div class="info-row-text"><strong>Başiskele / Kocaeli</strong>Yaylacık Mah. Ulubat Cad. No:4, 41140</div></div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-title">ÇALIŞMA SAATLERİ</div>
+        <div class="hours-grid">
+          <div class="hour-box"><div class="hour-day">Pzt–Cum</div><div class="hour-time">08:00–18:00</div></div>
+          <div class="hour-box"><div class="hour-day">Cumartesi</div><div class="hour-time">09:00–14:00</div></div>
+          <div class="hour-box" style="opacity:.4"><div class="hour-day">Pazar</div><div class="hour-time">Kapalı</div></div>
+          <div class="hour-box"><div class="hour-day">Acil Servis</div><div class="hour-time" style="color:var(--orange)">7/24</div></div>
+        </div>
+      </div>
+      <div class="map-box">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3023.61388971596!2d29.978944875843556!3d40.72651557139133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14cb5b0e4027bb5b%3A0xb51eb920a738ca94!2sBONUMECH%20TEKNOLOJ%C4%B0%20A.%C5%9E.!5e0!3m2!1str!2str!4v1722952493099!5m2!1str!2str" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-gray">
+  <div class="sec-eye">SIKÇA SORULAN SORULAR</div>
+  <div class="sec-title" style="margin-bottom:22px;">Hızlı cevaplar</div>
+  <div class="faq-grid">
+    <div class="faq-item"><div class="faq-q"><i class="ti ti-question-mark"></i>Teklif süreci nasıl işliyor?</div><div class="faq-a">Formu doldurmanızın ardından 48 saat içinde uzman ekibimiz sizi arar ve ücretsiz ön analiz sunar.</div></div>
+    <div class="faq-item"><div class="faq-q"><i class="ti ti-question-mark"></i>Kurulum ve devreye alma süreniz nedir?</div><div class="faq-a">Proje büyüklüğüne göre 3 ila 8 ay arasında değişmektedir. Mevcut hattınızı durdurmadan kurulum yapıyoruz.</div></div>
+    <div class="faq-item"><div class="faq-q"><i class="ti ti-question-mark"></i>Satış sonrası servis sunuyor musunuz?</div><div class="faq-a">Evet. Tüm sistemlere periyodik bakım sözleşmesi ve 7/24 teknik destek hattı sunuyoruz.</div></div>
+    <div class="faq-item"><div class="faq-q"><i class="ti ti-question-mark"></i>Yurt dışına proje yapıyor musunuz?</div><div class="faq-a">Evet. Türkiye dışında birden fazla ülkede aktif projelerimiz bulunmaktadır.</div></div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="js/common.js"></script>
+</body>
+</html>

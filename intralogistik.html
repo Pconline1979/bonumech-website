@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>İntralogistik — Bonumech Teknoloji A.Ş.</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    .tl{display:flex;flex-direction:column;gap:0;}
+    .tl-item{display:flex;gap:24px;padding-bottom:32px;}
+    .tl-item:last-child{padding-bottom:0;}
+    .tl-left{display:flex;flex-direction:column;align-items:center;width:40px;flex-shrink:0;}
+    .tl-dot{width:36px;height:36px;border-radius:50%;background:var(--orange-light);border:2px solid var(--orange);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--orange);flex-shrink:0;}
+    .tl-line{width:1.5px;flex:1;background:var(--light-border);margin-top:4px;}
+    .tl-item:last-child .tl-line{display:none;}
+    .tl-right{flex:1;padding-top:6px;}
+    .tl-era{font-size:10px;color:var(--orange);letter-spacing:1px;margin-bottom:4px;}
+    .tl-title{font-size:14px;font-weight:500;color:var(--text-dark);margin-bottom:6px;}
+    .tl-desc{font-size:12px;color:var(--text-gray);line-height:1.7;}
+    .what-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+    .what-card{background:#fff;border-radius:12px;padding:22px;border:0.5px solid var(--light-border);display:flex;gap:16px;}
+    .wc-icon{width:44px;height:44px;border-radius:10px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--orange);flex-shrink:0;}
+    .asrs-split{display:flex;gap:36px;align-items:flex-start;}
+    .asrs-left{flex:1;}
+    .asrs-right{width:260px;}
+    .asrs-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px;}
+    .astat{background:var(--dark-4);border-radius:8px;padding:14px;border:0.5px solid #222;}
+    .astat-num{font-size:20px;font-weight:500;color:var(--text-light);}
+    .astat-lbl{font-size:10px;color:#555;margin-top:2px;}
+    .flow-box{background:var(--dark);border-radius:10px;border:0.5px solid #1e1e1e;padding:20px;}
+    .flow-label{font-size:10px;color:#444;letter-spacing:1px;margin-bottom:14px;}
+    .flow-step{background:#161616;border:0.5px solid #222;border-radius:6px;padding:10px 12px;display:flex;align-items:center;gap:10px;margin-bottom:6px;}
+    .flow-num{width:20px;height:20px;border-radius:4px;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:500;flex-shrink:0;}
+    .flow-text{font-size:11px;color:#aaa;}
+    .flow-arr{text-align:center;color:#333;font-size:12px;margin:0 0 4px;}
+    .ben-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+    .ben-card{border-radius:10px;padding:20px;border:0.5px solid var(--light-border);background:var(--light-bg-3);}
+    .ben-num{font-size:28px;font-weight:500;color:var(--orange);margin-bottom:4px;}
+    @media(max-width:768px){.what-grid{grid-template-columns:1fr;}.asrs-split{flex-direction:column;}.asrs-right{width:100%;}.ben-grid{grid-template-columns:1fr;}}
+  </style>
+</head>
+<body>
+<div id="nav-placeholder"></div>
+<div class="page-hero">
+  <div class="eye">İNTRALOJİSTİK</div>
+  <h1>Depo içi lojistiğin<br><em>bilimi ve pratiği</em></h1>
+  <p>İntralogistik; üretim tesisi ya da depo içindeki tüm malzeme ve bilgi akışını kapsayan disiplinlerarası bir mühendislik alanıdır. Bonumech olarak bu alanda 10+ yıldır çözüm üretiyoruz.</p>
+</div>
+
+<div class="section">
+  <div class="sec-eye">TARİHSEL GELİŞİM</div>
+  <div class="sec-title">İntralogistiğin evrimi</div>
+  <div class="tl" style="margin-top:28px;">
+    <div class="tl-item"><div class="tl-left"><div class="tl-dot"><i class="ti ti-clock"></i></div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-era">ERKEN 1900'LER</div><div class="tl-title">Manuel süreçler ve mekanik yardımcılar</div><div class="tl-desc">Sanayi devrimi sonrası fabrikalarda konveyör bantları ve basit mekanik asansörler devreye girdi.</div></div></div>
+    <div class="tl-item"><div class="tl-left"><div class="tl-dot"><i class="ti ti-forklift"></i></div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-era">1950–1970</div><div class="tl-title">Forklift çağı ve mekanik otomasyon</div><div class="tl-desc">Forklift, palet ve ilk konveyör sistemleri yaygınlaştı. İlk ASRS prototipleri bu dönemde ortaya çıktı.</div></div></div>
+    <div class="tl-item"><div class="tl-left"><div class="tl-dot"><i class="ti ti-cpu"></i></div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-era">1980–2000</div><div class="tl-title">Bilgisayar kontrollü sistemler ve WMS</div><div class="tl-desc">PLC ve barkod sistemlerinin yaygınlaşmasıyla ilk Depo Yönetim Sistemleri devreye girdi.</div></div></div>
+    <div class="tl-item"><div class="tl-left"><div class="tl-dot"><i class="ti ti-robot"></i></div><div class="tl-line"></div></div><div class="tl-right"><div class="tl-era">2000–GÜNÜMÜZ</div><div class="tl-title">Akıllı depo ve endüstri 4.0</div><div class="tl-desc">IoT, yapay zeka ve robotik teknolojilerin entegrasyonuyla tam otonom depo sistemleri hayata geçti. Bonumech bu neslin yerli temsilcisi.</div></div></div>
+  </div>
+</div>
+
+<div class="section-gray">
+  <div class="sec-eye">KAPSAM</div>
+  <div class="sec-title">İntralogistik neyi kapsar?</div>
+  <div class="what-grid" style="margin-top:24px;">
+    <div class="what-card"><div class="wc-icon"><i class="ti ti-building-warehouse"></i></div><div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:5px;">Depolama sistemleri</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">ASRS, shuttle ve yüksek katlı depolar ile alan verimliliğini maksimuma taşıyın.</div></div></div>
+    <div class="what-card"><div class="wc-icon"><i class="ti ti-arrows-exchange"></i></div><div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:5px;">Malzeme taşıma</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Konveyörler, RGV'ler ve shuttle sistemleriyle depo içi akışı otomatikleştirin.</div></div></div>
+    <div class="what-card"><div class="wc-icon"><i class="ti ti-chart-line"></i></div><div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:5px;">Bilgi yönetimi (WMS)</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Gerçek zamanlı stok takibi ve raporlama ile tam operasyonel görünürlük.</div></div></div>
+    <div class="what-card"><div class="wc-icon"><i class="ti ti-package"></i></div><div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:5px;">Sipariş karşılama</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Otomatik paketleme ve sevkiyat hazırlama çözümleri ile hız ve doğruluk.</div></div></div>
+  </div>
+</div>
+
+<div class="section-dark">
+  <div class="asrs-split">
+    <div class="asrs-left">
+      <div class="sec-eye">ASRS SİSTEMLERİ</div>
+      <div class="sec-title-light">Otomatik Depolama ve Geri Alma</div>
+      <p style="font-size:13px;color:#777;line-height:1.85;margin-bottom:16px;">ASRS, ürünlerin otomatik olarak raflara depolandığı ve talep anında geri alındığı, crane veya shuttle teknolojisiyle çalışan yüksek verimli sistemlerdir. Bonumech'in HL ASRS ve Mini Load ASRS ürünleri Türkiye'de üretilen nadir yerli çözümler arasındadır.</p>
+      <div class="asrs-stats">
+        <div class="astat"><div class="astat-num">%40</div><div class="astat-lbl">Daha az alan</div></div>
+        <div class="astat"><div class="astat-num">%99</div><div class="astat-lbl">Stok doğruluğu</div></div>
+        <div class="astat"><div class="astat-num">3×</div><div class="astat-lbl">Hızlı karşılama</div></div>
+        <div class="astat"><div class="astat-num">7/24</div><div class="astat-lbl">Kesintisiz çalışma</div></div>
+      </div>
+    </div>
+    <div class="asrs-right">
+      <div class="flow-box">
+        <div class="flow-label">ASRS OPERASYON AKIŞI</div>
+        <div class="flow-step"><div class="flow-num">1</div><div class="flow-text">Sipariş WMS'e giriş</div></div>
+        <div class="flow-arr"><i class="ti ti-chevron-down"></i></div>
+        <div class="flow-step"><div class="flow-num">2</div><div class="flow-text">Lokasyon hesaplama</div></div>
+        <div class="flow-arr"><i class="ti ti-chevron-down"></i></div>
+        <div class="flow-step"><div class="flow-num">3</div><div class="flow-text">Crane hareketi</div></div>
+        <div class="flow-arr"><i class="ti ti-chevron-down"></i></div>
+        <div class="flow-step"><div class="flow-num">4</div><div class="flow-text">Ürün geri alma</div></div>
+        <div class="flow-arr"><i class="ti ti-chevron-down"></i></div>
+        <div class="flow-step"><div class="flow-num">5</div><div class="flow-text">Konveyör ile çıkış</div></div>
+        <div class="flow-arr"><i class="ti ti-chevron-down"></i></div>
+        <div class="flow-step" style="border-color:#3a2510;"><div class="flow-num">6</div><div class="flow-text" style="color:var(--orange);">Sipariş tamamlandı</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="sec-eye">FAYDALAR</div>
+  <div class="sec-title">Ölçülebilir kazanımlar</div>
+  <div class="ben-grid" style="margin-top:24px;">
+    <div class="ben-card"><div class="ben-num">%40</div><div style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Alan tasarrufu</div><div style="font-size:11px;color:var(--text-gray-2);">Dikey depolama ile aynı alanda çok daha fazla ürün.</div></div>
+    <div class="ben-card"><div class="ben-num">%60</div><div style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">İşgücü verimliliği</div><div style="font-size:11px;color:var(--text-gray-2);">Otomasyon ile manuel iş yükü dramatik biçimde azalır.</div></div>
+    <div class="ben-card"><div class="ben-num">%99</div><div style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Stok doğruluğu</div><div style="font-size:11px;color:var(--text-gray-2);">İnsan hatası ortadan kalkar, kayıp ve hasar en aza iner.</div></div>
+    <div class="ben-card"><div class="ben-num">3×</div><div style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Hız artışı</div><div style="font-size:11px;color:var(--text-gray-2);">Sipariş karşılama süresi 3 katına kadar kısalır.</div></div>
+    <div class="ben-card"><div class="ben-num">7/24</div><div style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Kesintisiz operasyon</div><div style="font-size:11px;color:var(--text-gray-2);">Sistemler insan yorgunluğuna bağlı olmadan çalışır.</div></div>
+    <div class="ben-card"><div class="ben-num">ROI</div><div style="font-size:12px;font-weight:500;color:var(--text-dark);margin-bottom:4px;">Hızlı geri dönüş</div><div style="font-size:11px;color:var(--text-gray-2);">Tipik yatırım geri dönüş süresi 3–5 yıl.</div></div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <div>
+    <div class="cta-badge"><i class="ti ti-clock"></i> 48 saat içinde yanıt</div>
+    <div class="cta-title">Deponuz için doğru çözümü birlikte belirleyelim</div>
+    <div class="cta-sub">Mühendis ekibimiz deponuzu analiz edip en verimli çözümü önerir.</div>
+  </div>
+  <div class="cta-actions">
+    <a href="iletisim.html" class="btn btn-primary" style="justify-content:center;">Ücretsiz Analiz Talebi</a>
+    <a href="urunler.html" class="btn btn-outline" style="justify-content:center;">Ürünleri İncele</a>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="js/common.js"></script>
+</body>
+</html>

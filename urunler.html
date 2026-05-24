@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ürünler — Bonumech Teknoloji A.Ş.</title>
+  <meta name="description" content="ASRS, shuttle, RGV, konveyör ve daha fazlası. Bonumech intralogistik ürün ailesi.">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+  <style>
+    .filter-tabs { display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap; }
+    .tab { font-size: 12px; padding: 7px 18px; border-radius: 20px; border: 0.5px solid #333; color: #888; cursor: pointer; transition: all .2s; background: transparent; }
+    .tab:hover { border-color: var(--orange); color: var(--orange); }
+    .tab.active { background: var(--orange); border-color: var(--orange); color: #fff; }
+    .prod-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
+    .prod-card { background: #fff; border: 0.5px solid var(--light-border); border-radius: var(--radius-lg); overflow: hidden; transition: border-color .2s, transform .2s; }
+    .prod-card:hover { border-color: var(--orange); transform: translateY(-2px); }
+    .prod-img { height: 180px; background: var(--light-bg-2); display: flex; align-items: center; justify-content: center; padding: 20px; border-bottom: 0.5px solid var(--light-border); position: relative; }
+    .prod-img img { max-height: 140px; max-width: 100%; object-fit: contain; }
+    .prod-badge { position: absolute; top: 10px; left: 10px; background: var(--orange); color: #fff; font-size: 9px; padding: 3px 9px; border-radius: 10px; letter-spacing: .5px; }
+    .prod-body { padding: 18px; }
+    .prod-title { font-size: 14px; font-weight: 500; color: var(--text-dark); margin-bottom: 6px; }
+    .prod-desc { font-size: 12px; color: var(--text-gray-2); line-height: 1.65; margin-bottom: 14px; }
+    .prod-link { font-size: 12px; color: var(--orange); display: inline-flex; align-items: center; gap: 4px; }
+    .cta-bar { background: var(--dark-4); padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .cta-bar h2 { font-size: 18px; font-weight: 500; color: var(--text-light); margin-bottom: 4px; }
+    .cta-bar p { font-size: 13px; color: var(--text-dim); }
+    @media (max-width: 768px) { .prod-grid { grid-template-columns: 1fr; } .cta-bar { flex-direction: column; padding: 32px 20px; } }
+  </style>
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-hero">
+  <div class="eye">ÜRÜNLER</div>
+  <h1>Akıllı depo için <em>eksiksiz</em> ürün ailesi</h1>
+  <p>ASRS sistemlerinden shuttle'lara, konveyörlerden RGV'lere — tüm intralogistik bileşenleri kendi fabrikamızda tasarlıyor ve üretiyoruz.</p>
+  <div class="filter-tabs">
+    <div class="tab active" onclick="filterProds('all',this)">Tümü</div>
+    <div class="tab" onclick="filterProds('asrs',this)">ASRS & Depolama</div>
+    <div class="tab" onclick="filterProds('tasima',this)">Taşıma & Aktarma</div>
+    <div class="tab" onclick="filterProds('konveyor',this)">Konveyör & Asansör</div>
+  </div>
+</div>
+
+<div class="section-gray">
+  <div class="prod-grid" id="prod-grid">
+
+    <div class="prod-card" data-cat="asrs">
+      <div class="prod-img">
+        <div class="prod-badge">FLAGSHIP</div>
+        <img src="https://www.bonumech.com/images/HL asrs.svg" alt="HL ASRS">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">HL ASRS</div>
+        <div class="prod-desc">Yüksek katlı otomatik depolama ve geri alma sistemi — maksimum alan verimliliği ve kesintisiz operasyon.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="asrs">
+      <div class="prod-img">
+        <div class="prod-badge">YENİ</div>
+        <img src="https://www.bonumech.com/images/Rackspider2.svg" alt="Rackspider">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Rackspider</div>
+        <div class="prod-desc">Raf sistemleri içinde otonom hareket eden yüksek yoğunluklu depolama robotu.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="asrs">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/miniLoadAsrs.svg" alt="Mini Load ASRS">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Mini Load ASRS</div>
+        <div class="prod-desc">Küçük yük birimlerine (kutu, tepsi) özel otomatik depolama ve geri alma sistemi.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="tasima">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/Pallet-shuttle.svg" alt="Pallet Shuttle">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Pallet Transport Trolley (Shuttle)</div>
+        <div class="prod-desc">Yüksek hızlı palet taşıma ve depolama için ray üzerinde çalışan shuttle sistemi.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="tasima">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/RGV.svg" alt="Rail Guided Vehicle">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Rail Guided Vehicle (RGV)</div>
+        <div class="prod-desc">Ray güdümlü taşıma aracı — depo koridorlarında hassas ve hızlı malzeme aktarımı.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="tasima">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/DE-STACKER.svg" alt="Destacker Stacker">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Destacker / Stacker</div>
+        <div class="prod-desc">Otomatik istifleme ve ayırma çözümü — üretim ve depolama hatlarında kesintisiz akış.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="konveyor">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/VerticalConveroy.svg" alt="Vertical Conveyor">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Vertical Conveyor</div>
+        <div class="prod-desc">Dikey malzeme taşıma — katlar arası yüksek kapasiteli ve güvenli aktarım sistemi.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="konveyor">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/MiniLoadElavator.svg" alt="Mini Load Elevator">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Mini Load Elevator</div>
+        <div class="prod-desc">Mini load sistemleri için özel tasarlanmış dikey taşıma asansörü.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+    <div class="prod-card" data-cat="tasima">
+      <div class="prod-img">
+        <img src="https://www.bonumech.com/images/turnTablesolu.svg" alt="Turn Table">
+      </div>
+      <div class="prod-body">
+        <div class="prod-title">Turn Table</div>
+        <div class="prod-desc">Konveyör hatlarında yön değiştirme için döner tabla — kompakt ve güvenilir çözüm.</div>
+        <a href="proje-detay.html" class="prod-link"><i class="ti ti-arrow-right"></i> Detayları gör</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="cta-bar">
+  <div>
+    <h2>İhtiyacınıza özel sistem mi arıyorsunuz?</h2>
+    <p>Mühendis ekibimiz ihtiyacınızı analiz edip size özel çözüm üretir.</p>
+  </div>
+  <a href="iletisim.html" class="btn btn-primary">Bizimle İletişime Geçin →</a>
+</div>
+
+<div id="footer-placeholder"></div>
+<script src="js/common.js"></script>
+<script>
+function filterProds(cat, el) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.prod-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>

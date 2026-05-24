@@ -39,7 +39,20 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: var(--font); background: var(--light-bg); color: var(--text-dark); line-height: 1.6; }
+body { font-family: var(--font); background: #0d0d0d; color: var(--text-dark); line-height: 1.6; }
+
+/* Tüm sayfa içeriğini 1440px ile sınırla, ortaya al */
+.site-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  background: var(--light-bg);
+  box-shadow: 0 0 80px rgba(0,0,0,.5);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* Body dışı arkaplan koyu kalsın, wrapper içi beyaz/normal */
+
 a { text-decoration: none; color: inherit; }
 img { max-width: 100%; display: block; }
 
@@ -231,4 +244,23 @@ img { max-width: 100%; display: block; }
   .cta-section { flex-direction: column; padding: 36px 20px; }
   .footer-main { grid-template-columns: 1fr; padding: 32px 20px; }
   .footer-bar { flex-direction: column; gap: 8px; padding: 16px 20px; }
+}
+
+/* Nav sticky wrapper içinde çalışsın */
+.site-wrapper .nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Section padding'leri 1080p için optimize et */
+@media (min-width: 1200px) {
+  .nav { padding: 0 56px; }
+  .page-hero { padding: 64px 56px 56px; }
+  .section, .section-dark, .section-gray { padding: 64px 56px; }
+  .stats-strip { padding: 20px 56px; }
+  .cta-section { padding: 60px 56px; }
+  .footer-main { padding: 48px 56px; }
+  .footer-bar { padding: 16px 56px; }
+  .breadcrumb { padding: 14px 56px; }
 }

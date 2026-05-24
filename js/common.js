@@ -30,8 +30,8 @@ const FOOTER_HTML = `
         İntralogistik & Otomasyon Sistemleri<br><br>
         Yaylacık Mah., Ulubat Cad. No:4<br>
         41140 Başiskele / Kocaeli / Türkiye<br><br>
-        +90 262 349 66 47<br>
-        info@bonumech.com
+        <a href="tel:+902623496647" style="color:#aaa;">+90 262 349 66 47</a><br>
+        <a href="mailto:info@bonumech.com" style="color:#aaa;">info@bonumech.com</a>
       </div>
       <div class="footer-socials">
         <a href="https://www.linkedin.com/company/bonumech-teknoloji/" class="social-icon" target="_blank"><i class="ti ti-brand-linkedin"></i></a>

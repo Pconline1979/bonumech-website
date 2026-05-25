@@ -61,6 +61,20 @@ const FOOTER_HTML = `
       <a href="#" class="footer-link">English</a>
     </div>
   </div>
+  <div style="padding:20px 48px;border-top:0.5px solid #1e1e1e;display:flex;align-items:center;gap:24px;flex-wrap:wrap;">
+    <span style="font-size:11px;color:#555;">Sertifikalarımız:</span>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <span style="background:#1a1a1a;border:0.5px solid #333;border-radius:6px;padding:5px 14px;font-size:11px;color:#aaa;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-rosette" style="font-size:13px;color:#e8530a;"></i> ISO 9001:2015 · Kalite Yönetimi
+      </span>
+      <span style="background:#1a1a1a;border:0.5px solid #333;border-radius:6px;padding:5px 14px;font-size:11px;color:#aaa;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-leaf" style="font-size:13px;color:#3a9a6a;"></i> ISO 14001:2015 · Çevre Yönetimi
+      </span>
+      <span style="background:#1a1a1a;border:0.5px solid #333;border-radius:6px;padding:5px 14px;font-size:11px;color:#aaa;display:flex;align-items:center;gap:6px;">
+        <i class="ti ti-shield-check" style="font-size:13px;color:#3a7abd;"></i> ISO 45001:2018 · İş Sağlığı & Güvenliği
+      </span>
+    </div>
+  </div>
   <div class="footer-bar">
     <div class="footer-copy">Bonumech ® 2025 · Tüm hakları saklıdır.</div>
     <div class="footer-legal">

@@ -33,15 +33,21 @@
 
 <div id="nav-placeholder"></div>
 
-<div class="page-hero">
-  <div class="eye">ÜRÜNLER</div>
-  <h1>Akıllı depo için <em>eksiksiz</em> ürün ailesi</h1>
-  <p>ASRS sistemlerinden shuttle'lara, konveyörlerden RGV'lere — tüm intralogistik bileşenleri kendi fabrikamızda tasarlıyor ve üretiyoruz.</p>
-  <div class="filter-tabs">
+<div class="page-hero" style="position:relative;overflow:hidden;padding:0;min-height:340px;display:flex;align-items:center;">
+  <video autoplay muted loop playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:1;z-index:0;">
+    <source src="videos/urunler_hero.mp4" type="video/mp4">
+  </video>
+  <div style="position:absolute;inset:0;background:rgba(0,0,0,0.55);z-index:1;"></div>
+  <div style="position:relative;z-index:2;padding:64px 48px;width:100%;">
+    <div class="eye">ÜRÜNLER</div>
+    <h1 style="color:#f5f0eb;">Akıllı depo için <em style="color:#e8530a;font-style:normal;">eksiksiz</em> ürün ailesi</h1>
+    <p style="color:#aaa;margin-top:12px;max-width:520px;">ASRS sistemlerinden shuttle'lara, konveyörlerden RGV'lere — tüm intralogistik bileşenleri kendi fabrikamızda tasarlıyor ve üretiyoruz.</p>
+    <div class="filter-tabs">
     <div class="tab active" onclick="filterProds('all',this)">Tümü</div>
     <div class="tab" onclick="filterProds('asrs',this)">ASRS & Depolama</div>
     <div class="tab" onclick="filterProds('tasima',this)">Taşıma & Aktarma</div>
     <div class="tab" onclick="filterProds('konveyor',this)">Konveyör & Asansör</div>
+    </div>
   </div>
 </div>
 

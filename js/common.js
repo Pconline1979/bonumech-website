@@ -54,7 +54,7 @@ const FOOTER_HTML = `
       <a href="projeler.html" class="footer-link">Projeler</a>
       <a href="blog.html" class="footer-link">Haberler & Blog</a>
       <a href="iletisim.html" class="footer-link">İletişim</a>
-      <a href="Bonumech_Brosur.pdf" target="_blank" class="footer-link" style="color:#e8530a;display:flex;align-items:center;gap:5px;margin-top:6px;"><i class="ti ti-file-download" style="font-size:13px;"></i> Broşür İndir</a>
+      <a href="docs/Bonumech_Brosur.pdf" target="_blank" class="footer-link" style="color:#e8530a;display:flex;align-items:center;gap:5px;margin-top:6px;"><i class="ti ti-file-download" style="font-size:13px;"></i> Broşür İndir</a>
     </div>
     <div>
       <div class="footer-col-title">DİL</div>

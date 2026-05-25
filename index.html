@@ -1,127 +1,264 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hakkımızda — Bonumech Teknoloji A.Ş.</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonumech Teknoloji A.Ş. — İntralogistik & ASRS Sistemleri</title>
+  <meta name="description" content="Bonumech Teknoloji A.Ş., Kocaeli merkezli ASRS, shuttle ve intralogistik sistemleri tasarlayan ve üreten mühendislik firmasıdır.">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
   <style>
-    .hero-split{display:flex;gap:36px;align-items:center;}
-    .hero-split-left{flex:1;}
-    .hero-stats{width:240px;display:flex;flex-direction:column;gap:10px;}
-    .hstat{background:#1a1a1a;border:0.5px solid #222;border-radius:8px;padding:14px 16px;display:flex;align-items:center;gap:12px;}
-    .hstat-icon{width:36px;height:36px;border-radius:8px;background:#2a1a0e;display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--orange);flex-shrink:0;}
-    .hstat-num{font-size:18px;font-weight:500;color:var(--text-light);}
-    .hstat-lbl{font-size:10px;color:#555;margin-top:1px;}
-    .story-split{display:flex;gap:40px;}
-    .story-main{flex:1;}
-    .story-side{width:210px;display:flex;flex-direction:column;gap:12px;}
-    .fact-card{background:var(--light-bg-2);border-radius:10px;padding:16px;border:0.5px solid var(--light-border);}
-    .fact-label{font-size:10px;color:var(--orange);letter-spacing:1px;margin-bottom:4px;}
-    .fact-val{font-size:13px;font-weight:500;color:var(--text-dark);}
-    .fact-sub{font-size:11px;color:var(--text-gray-2);margin-top:2px;}
-    .val-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-    .val-card{background:#fff;border-radius:12px;padding:22px;border:0.5px solid var(--light-border);}
-    .vc-icon{width:44px;height:44px;border-radius:10px;background:var(--orange-light);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--orange);margin-bottom:14px;}
-    .team-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;}
-    .team-card{background:var(--dark-3);border-radius:10px;border:0.5px solid var(--border-dark-2);overflow:hidden;}
-    .tc-avatar{height:80px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:500;}
-    .tc-body{padding:12px;}
-    .tc-name{font-size:12px;font-weight:500;color:#ddd;margin-bottom:2px;}
-    .tc-role{font-size:10px;color:#555;}
-    @media(max-width:768px){.hero-split,.story-split{flex-direction:column;}.hero-stats,.story-side{width:100%;}.val-grid{grid-template-columns:1fr;}.team-grid{grid-template-columns:repeat(2,1fr);}}
+    /* HERO */
+    .hero { background: #0d0d0d; display: flex; min-height: 480px; position: relative; overflow: hidden; }
+    .hero-video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; }
+    .hero-overlay { display: none; }
+    .hero-content { position: relative; z-index: 2; display: flex; width: 100%; }
+    .hero-left { flex: 1; padding: 64px 48px 56px; display: flex; flex-direction: column; justify-content: center; }
+    .hero-eyebrow { display: flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .eyebrow-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--orange); }
+    .eyebrow-text { color: #888; font-size: 11px; letter-spacing: 1.5px; }
+    .hero-h1 { font-size: 42px; font-weight: 500; line-height: 1.15; color: var(--text-white); margin-bottom: 6px; }
+    .hero-h1 em { color: var(--orange); font-style: normal; }
+    .hero-eyebrow .eyebrow-text { color: #ccc; }
+    .hero-h2 { font-size: 42px; font-weight: 500; line-height: 1.15; color: #aaa; margin-bottom: 22px; }
+    .hero-desc { color: #ccc; font-size: 14px; line-height: 1.85; max-width: 420px; margin-bottom: 32px; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-trust { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+    .trust-faces { display: flex; }
+    .face { width: 30px; height: 30px; border-radius: 50%; border: 2px solid #0d0d0d; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 500; margin-left: -9px; }
+    .face:first-child { margin-left: 0; }
+    .f1{background:#2a3a4a;color:#7ab;} .f2{background:#3a2a4a;color:#a7b;} .f3{background:#2a4a3a;color:#7ba;} .f4{background:#4a3a2a;color:#ba7;}
+    .trust-text { font-size: 11px; color: #666; line-height: 1.5; }
+    .trust-text strong { color: #aaa; display: block; }
+
+    /* HERO RIGHT PANEL */
+    .hero-right { width: 340px; background: rgba(8,8,8,.92); border-left: 0.5px solid #1e1e1e; padding: 36px 28px; display: flex; flex-direction: column; gap: 16px; }
+    .widget-label { font-size: 12px; color: #666; letter-spacing: 1px; margin-bottom: 4px; }
+    .stat-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .stat-box { background: #161616; border: 0.5px solid #222; border-radius: 8px; padding: 18px 16px; }
+    .stat-box .num { font-size: 30px; font-weight: 500; color: var(--text-light); }
+    .stat-box .lbl { font-size: 13px; color: #777; margin-top: 4px; }
+    .stat-box .acc { font-size: 12px; color: var(--orange); margin-top: 6px; }
+    .proj-list { background: #161616; border: 0.5px solid #222; border-radius: 8px; overflow: hidden; }
+    .proj-row { padding: 13px 16px; border-bottom: 0.5px solid #1e1e1e; display: flex; align-items: center; gap: 12px; }
+    .proj-row:last-child { border-bottom: none; }
+    .proj-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .proj-row .name { font-size: 13px; color: #ccc; flex: 1; }
+    .proj-row .year { font-size: 12px; color: #666; }
+    .bar-chart { display: flex; gap: 5px; align-items: flex-end; height: 48px; }
+    .bar { border-radius: 2px 2px 0 0; }
+
+    /* SOLUTIONS */
+    .sol-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+    .sol-card { background: #fff; border: 0.5px solid var(--light-border); border-radius: var(--radius-lg); padding: 22px; transition: border-color .2s; }
+    .sol-card:hover { border-color: var(--orange); }
+    .sol-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--orange-light); display: flex; align-items: center; justify-content: center; font-size: 20px; color: var(--orange); margin-bottom: 14px; }
+
+    /* PROJECTS DARK */
+    .proj-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; }
+    .pcard { background: #141414; border: 0.5px solid #2a2a2a; border-radius: var(--radius-lg); overflow: hidden; transition: border-color .2s; }
+    .pcard:hover { border-color: var(--orange); }
+    .pcard-thumb { height: 110px; display: flex; align-items: center; justify-content: center; font-size: 36px; }
+    .pcard-thumb img { max-height: 90px; max-width: 100%; object-fit: contain; padding: 10px; }
+    .pcard-body { padding: 14px; }
+    .pcard-tag { font-size: 9px; color: var(--orange); letter-spacing: 1px; margin-bottom: 4px; }
+    .pcard-name { font-size: 12px; font-weight: 500; color: #ddd; }
+    .pcard-client { font-size: 10px; color: #555; margin-top: 3px; }
+
+    /* REFERENCES */
+    .ref-logos { display: flex; gap: 10px; flex-wrap: wrap; }
+    .ref-logo { border: 0.5px solid var(--light-border); border-radius: 8px; padding: 13px 24px; font-size: 13px; font-weight: 500; color: #888; background: var(--light-bg-3); }
+
+    /* ABOUT SPLIT */
+    .about-split { display: flex; gap: 40px; align-items: flex-start; }
+    .about-main { flex: 1; }
+    .about-side { width: 210px; display: flex; flex-direction: column; gap: 12px; }
+    .val-card { background: var(--light-bg-2); border-radius: 10px; padding: 16px; border: 0.5px solid var(--light-border); }
+    .val-icon { font-size: 18px; color: var(--orange); margin-bottom: 8px; }
+    .val-title { font-size: 12px; font-weight: 500; color: var(--text-dark); margin-bottom: 4px; }
+    .val-desc { font-size: 11px; color: var(--text-gray-2); line-height: 1.55; }
+
+    @media (max-width: 768px) {
+      .hero { flex-direction: column; min-height: auto; }
+      .hero-left { padding: 40px 20px; }
+      .hero-h1, .hero-h2 { font-size: 28px; }
+      .hero-right { display: none; }
+      .sol-grid, .proj-grid { grid-template-columns: 1fr; }
+      .about-split { flex-direction: column; }
+      .about-side { width: 100%; }
+    }
   </style>
 </head>
 <body>
 <div class="site-wrapper">
-<div id="nav-placeholder"></div>
-<div class="page-hero" style="padding-bottom:56px;">
-  <div class="eye">HAKKIMIZDA</div>
-  <div class="hero-split" style="margin-top:24px;">
-    <div class="hero-split-left">
-      <h1 style="font-size:32px;">Türkiye'nin yerli<br><em>intralogistik</em> üreticisi</h1>
-      <p style="margin-top:14px;">Bonumech Teknoloji A.Ş., Kocaeli'nde kurulu, ASRS ve intralogistik sistemleri tasarlayıp üreten mühendislik şirketidir. Her sistemimizi kendi fabrikamızda, kendi mühendislerimizle yapıyoruz.</p>
-    </div>
-    <div class="hero-stats">
-      <div class="hstat"><div class="hstat-icon"><i class="ti ti-calendar"></i></div><div><div class="hstat-num">10+</div><div class="hstat-lbl">Yıl sektör deneyimi</div></div></div>
-      <div class="hstat"><div class="hstat-icon"><i class="ti ti-package"></i></div><div><div class="hstat-num">80+</div><div class="hstat-lbl">Tamamlanan proje</div></div></div>
-      <div class="hstat"><div class="hstat-icon"><i class="ti ti-users"></i></div><div><div class="hstat-num">30+</div><div class="hstat-lbl">Uzman çalışan</div></div></div>
-      <div class="hstat"><div class="hstat-icon"><i class="ti ti-world"></i></div><div><div class="hstat-num">3</div><div class="hstat-lbl">Ülkede aktif proje</div></div></div>
-    </div>
-  </div>
-</div>
 
-<div class="section">
-  <div class="story-split">
-    <div class="story-main">
-      <div class="sec-eye">HİKAYEMİZ</div>
-      <div class="sec-title">Mühendislik tutkusundan doğan bir şirket</div>
-      <p style="font-size:13px;color:var(--text-gray);line-height:1.9;margin-bottom:14px;">Bonumech Teknoloji, depo otomasyonu alanında yerli ve özgün çözümlere duyulan ihtiyaçtan doğdu. Kurucularımız, yıllarca yurt dışı teknolojilerine bağımlı kalan Türk endüstrisine kendi ürettiğimiz sistemleri sunmak amacıyla bir araya geldi.</p>
-      <p style="font-size:13px;color:var(--text-gray);line-height:1.9;">Kocaeli'ndeki fabrikamızda her ürün, baştan sona tasarlanıp üretiliyor. Mekanik tasarımdan yazılım entegrasyonuna, kurulumdan devreye almaya kadar tüm süreç tek çatı altında yönetiliyor.</p>
-    </div>
-    <div class="story-side">
-      <div class="fact-card"><div class="fact-label">KURULUŞ</div><div class="fact-val">Kocaeli, Türkiye</div><div class="fact-sub">Başiskele Organize Sanayi</div></div>
-      <div class="fact-card"><div class="fact-label">SEKTÖRLER</div><div class="fact-val">Otomotiv, FMCG</div><div class="fact-sub">Lojistik, İmalat</div></div>
-      <div class="fact-card">
-        <div class="fact-label">SERTİFİKASYONLAR</div>
-        <div style="display:flex;flex-direction:column;gap:8px;margin-top:4px;">
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="background:#fdf0ea;border:0.5px solid #f5d5c0;border-radius:5px;padding:3px 10px;font-size:11px;color:#e8530a;font-weight:500;">ISO 9001:2015</span>
-            <span style="font-size:11px;color:var(--text-gray-2);">Kalite yönetimi</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="background:#fdf0ea;border:0.5px solid #f5d5c0;border-radius:5px;padding:3px 10px;font-size:11px;color:#e8530a;font-weight:500;">ISO 14001:2015</span>
-            <span style="font-size:11px;color:var(--text-gray-2);">Çevre yönetimi</span>
-          </div>
-          <div style="display:flex;align-items:center;gap:8px;">
-            <span style="background:#fdf0ea;border:0.5px solid #f5d5c0;border-radius:5px;padding:3px 10px;font-size:11px;color:#e8530a;font-weight:500;">ISO 45001:2018</span>
-            <span style="font-size:11px;color:var(--text-gray-2);">İş sağlığı & güvenliği</span>
-          </div>
+<div id="nav-placeholder"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <video class="hero-video" autoplay muted loop playsinline>
+    <source src="videos/bonumech_intro.mp4" type="video/mp4">
+  </video>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-dot"></div>
+        <div class="eyebrow-text">DEPO OTOMASYONU · ASRS · İNTRALOJİSTİK</div>
+      </div>
+      <div class="hero-h1">Deponuzu<br>daha <em>akıllı</em> hale</div>
+      <div class="hero-h2">getiriyoruz.</div>
+      <div class="hero-desc">Kocaeli merkezli mühendislik firması olarak ASRS, shuttle sistemleri ve anahtar teslim intralogistik projeler tasarlıyor, üretip devreye alıyoruz.</div>
+      <div class="hero-actions">
+        <a href="projeler.html" class="btn btn-primary">Projelerimizi İnceleyin</a>
+        <a href="iletisim.html" class="btn btn-outline"><i class="ti ti-phone"></i> Bizi Arayın</a>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-faces">
+          <div class="face f1">FK</div><div class="face f2">AR</div>
+          <div class="face f3">MT</div><div class="face f4">SY</div>
         </div>
+        <div class="trust-text">
+          <strong>30+ mutlu müşteri</strong>
+          Otomotiv, FMCG ve lojistik sektörlerinde
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="widget-label">CANLI VERİ</div>
+      <div class="stat-pair">
+        <div class="stat-box"><div class="num">80+</div><div class="lbl">Teslim edilen sistem</div><div class="acc">↑ 12 bu yıl</div></div>
+        <div class="stat-box"><div class="num">10+</div><div class="lbl">Yıl deneyim</div><div class="acc">Kocaeli bazlı</div></div>
+      </div>
+      <div class="widget-label" style="margin-top:4px;">SON PROJELER</div>
+      <div class="proj-list">
+        <div class="proj-row"><div class="proj-dot" style="background:var(--orange)"></div><div class="name">Miniload ASRS · SAS</div><div class="year">2023</div></div>
+        <div class="proj-row"><div class="proj-dot" style="background:#3a7abd"></div><div class="name">Auto Truck Loading</div><div class="year">2023</div></div>
+        <div class="proj-row"><div class="proj-dot" style="background:#3a9a6a"></div><div class="name">Ferrero WH Sistemi</div><div class="year">2022</div></div>
+      </div>
+      <div class="widget-label" style="margin-top:4px;">PROJE HACMİ</div>
+      <div class="bar-chart">
+        <div class="bar" style="width:14px;height:30%;background:#2a2a2a"></div>
+        <div class="bar" style="width:14px;height:45%;background:#2a2a2a"></div>
+        <div class="bar" style="width:14px;height:40%;background:#2a2a2a"></div>
+        <div class="bar" style="width:14px;height:55%;background:#2a2a2a"></div>
+        <div class="bar" style="width:14px;height:62%;background:#2a2a2a"></div>
+        <div class="bar" style="width:14px;height:75%;background:var(--orange)"></div>
+        <div class="bar" style="width:14px;height:85%;background:var(--orange)"></div>
+        <div class="bar" style="width:14px;height:100%;background:var(--orange)"></div>
       </div>
     </div>
   </div>
 </div>
 
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stat-item"><div class="stat-num">10+</div><div class="stat-lbl">Yıl Sektör Deneyimi</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><div class="stat-num">80+</div><div class="stat-lbl">Tamamlanan Proje</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><div class="stat-num">30+</div><div class="stat-lbl">Müşteri Referansı</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><div class="stat-num">3</div><div class="stat-lbl">Ülke</div></div>
+  <div class="stat-sep"></div>
+  <div class="stat-item"><div class="stat-num">48s</div><div class="stat-lbl">Teklif Yanıt Süresi</div></div>
+</div>
+
+<!-- ABOUT -->
+<div class="section">
+  <div class="about-split">
+    <div class="about-main">
+      <div class="sec-eye">HAKKIMIZDA</div>
+      <div class="sec-title">Endüstriyel otomasyonda <span style="color:var(--orange)">güvenilir</span> çözüm ortağınız</div>
+      <p style="font-size:13px;color:var(--text-gray);line-height:1.85;margin-bottom:20px;">Bonumech Teknoloji A.Ş. olarak; depo içi lojistiği dönüştüren ASRS sistemleri, shuttle çözümleri ve montaj hattı fikstürleri tasarlıyor, üretip anahtar teslim devreye alıyoruz. Her projede müşterimizin operasyonel ihtiyacını merkeze alıyoruz.</p>
+      <a href="hakkimizda.html" class="btn btn-outline-dark"><i class="ti ti-arrow-right"></i> Daha fazla bilgi</a>
+    </div>
+    <div class="about-side">
+      <div class="val-card"><div class="val-icon"><i class="ti ti-certificate"></i></div><div class="val-title">Yerli üretim</div><div class="val-desc">Kocaeli fabrikamızda tasarım ve üretim</div></div>
+      <div class="val-card">
+        <div class="val-icon"><i class="ti ti-rosette"></i></div>
+        <div class="val-title">ISO Sertifikaları</div>
+        <div class="val-desc">
+          <span style="display:flex;gap:6px;flex-wrap:wrap;margin-top:4px;">
+            <span style="background:#fdf0ea;border:0.5px solid #f5d5c0;border-radius:5px;padding:2px 8px;font-size:10px;color:#e8530a;font-weight:500;">ISO 9001</span>
+            <span style="background:#fdf0ea;border:0.5px solid #f5d5c0;border-radius:5px;padding:2px 8px;font-size:10px;color:#e8530a;font-weight:500;">ISO 14001</span>
+            <span style="background:#fdf0ea;border:0.5px solid #f5d5c0;border-radius:5px;padding:2px 8px;font-size:10px;color:#e8530a;font-weight:500;">ISO 45001</span>
+          </span>
+        </div>
+      </div>
+      <div class="val-card"><div class="val-icon"><i class="ti ti-headset"></i></div><div class="val-title">Tam destek</div><div class="val-desc">Proje sonrası bakım ve teknik servis</div></div>
+      <div class="val-card"><div class="val-icon"><i class="ti ti-settings-2"></i></div><div class="val-title">Özel çözümler</div><div class="val-desc">Alanınıza ve ihtiyacınıza özel tasarım</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SOLUTIONS -->
 <div class="section-gray">
-  <div class="sec-eye">DEĞERLERİMİZ</div>
-  <div class="sec-title">Bizi biz yapan ilkeler</div>
-  <div class="val-grid" style="margin-top:24px;">
-    <div class="val-card"><div class="vc-icon"><i class="ti ti-bulb"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Mühendislik önce gelir</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Her projede doğru mühendislik kararını veririz. Kısa yolları değil, kalıcı çözümleri seçeriz.</div></div>
-    <div class="val-card"><div class="vc-icon"><i class="ti ti-shield-check"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Söz verdiğimizi yaparız</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Teslim tarihlerine ve teknik spesifikasyonlara bağlılık şirket kültürümüzün temelidir.</div></div>
-    <div class="val-card"><div class="vc-icon"><i class="ti ti-refresh"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Sürekli gelişim</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Her projeden öğrenir, her ürünü bir öncekinden daha iyi yaparız.</div></div>
-    <div class="val-card"><div class="vc-icon"><i class="ti ti-users"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Müşteri ortaklığı</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Müşterilerimizi sadece alıcı değil, çözüm ortağı olarak görürüz.</div></div>
-    <div class="val-card"><div class="vc-icon"><i class="ti ti-flag"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Yerli üretim gururu</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Türkiye'de tasarlayıp Türkiye'de üretiyoruz.</div></div>
-    <div class="val-card"><div class="vc-icon"><i class="ti ti-headset"></i></div><div style="font-size:13px;font-weight:500;color:var(--text-dark);margin-bottom:6px;">Satış sonrası destek</div><div style="font-size:11px;color:var(--text-gray-2);line-height:1.6;">Sistem devreye girdikten sonra da yanınızdayız. Bakım ve teknik destek garantisi.</div></div>
+  <div class="sec-eye">ÇÖZÜMLER</div>
+  <div class="sec-title">Ne yapıyoruz?</div>
+  <div class="sec-sub">Otomasyondan montaj hatlarına — uçtan uca mühendislik hizmetleri.</div>
+  <div class="sol-grid">
+    <div class="sol-card"><div class="sol-icon"><i class="ti ti-building-warehouse"></i></div><div class="card-title">ASRS Sistemleri</div><div class="card-desc">Miniload, palet ve tepsi varyantlarıyla yüksek yoğunluklu otomatik depolama.</div><a href="urunler.html" class="card-link"><i class="ti ti-arrow-right"></i> İnceleyin</a></div>
+    <div class="sol-card"><div class="sol-icon"><i class="ti ti-arrows-exchange"></i></div><div class="card-title">Shuttle Sistemleri</div><div class="card-desc">Yüksek verimli depo ortamları için esnek, ölçeklenebilir shuttle çözümleri.</div><a href="urunler.html" class="card-link"><i class="ti ti-arrow-right"></i> İnceleyin</a></div>
+    <div class="sol-card"><div class="sol-icon"><i class="ti ti-package"></i></div><div class="card-title">Anahtar Teslim Projeler</div><div class="card-desc">Kapalı alan WH sistemleri, otomatik TIR yükleme, tam entegre lojistik.</div><a href="projeler.html" class="card-link"><i class="ti ti-arrow-right"></i> İnceleyin</a></div>
+    <div class="sol-card"><div class="sol-icon"><i class="ti ti-tool"></i></div><div class="card-title">Montaj Fikstürleri</div><div class="card-desc">P2L sistemleri, çekme test istasyonları, pres fikstürleri.</div><a href="projeler.html" class="card-link"><i class="ti ti-arrow-right"></i> İnceleyin</a></div>
+    <div class="sol-card"><div class="sol-icon"><i class="ti ti-chart-dots"></i></div><div class="card-title">WMS Entegrasyonu</div><div class="card-desc">Tam operasyonel görünürlük için depo yönetim yazılımı entegrasyonu.</div><a href="iletisim.html" class="card-link"><i class="ti ti-arrow-right"></i> İletişim</a></div>
+    <div class="sol-card" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;border-style:dashed;opacity:.4;"><i class="ti ti-plus" style="font-size:22px;color:#bbb"></i><div style="font-size:12px;color:#aaa">Özel çözüm talebi</div></div>
   </div>
 </div>
 
+<!-- PROJECTS -->
 <div class="section-dark">
-  <div class="sec-eye">EKİBİMİZ</div>
-  <div class="sec-title-light">Arkamızdaki mühendisler</div>
-  <div class="sec-sub-light">Mekanik tasarımdan yazılıma, proje yönetiminden sahaya — disiplinlerarası bir ekip.</div>
-  <div class="team-grid">
-    <div class="team-card"><div class="tc-avatar" style="background:#1a2230;color:#4a8abd;">MK</div><div class="tc-body"><div class="tc-name">Genel Müdür</div><div class="tc-role">Kurucu & CEO</div></div></div>
-    <div class="team-card"><div class="tc-avatar" style="background:#1a2620;color:#4abd8a;">AY</div><div class="tc-body"><div class="tc-name">Baş Mühendis</div><div class="tc-role">Mekanik Tasarım</div></div></div>
-    <div class="team-card"><div class="tc-avatar" style="background:#25181e;color:#bd4a8a;">ST</div><div class="tc-body"><div class="tc-name">Yazılım Lid.</div><div class="tc-role">WMS & Otomasyon</div></div></div>
-    <div class="team-card"><div class="tc-avatar" style="background:#22201a;color:#bd8a4a;">RD</div><div class="tc-body"><div class="tc-name">Proje Müdürü</div><div class="tc-role">Saha & Devreye Alma</div></div></div>
+  <div class="sec-eye">REFERANS PROJELERİ</div>
+  <div class="sec-title-light">Gerçek hayatta teslim ettiğimiz sistemler</div>
+  <div class="sec-sub-light">Otomotiv, FMCG ve lojistik sektörlerinde tamamladığımız projelerden seçkiler.</div>
+  <div class="proj-grid">
+    <a href="proje-detay.html" class="pcard">
+      <div class="pcard-thumb" style="background:#1a2230"><img src="https://www.bonumech.com/Solutions/MiniLoad/miniload1.svg" alt="Miniload ASRS" onerror="this.style.display='none'"><i class="ti ti-stack-2" style="color:#3a7abd;font-size:32px;display:none" id="fallback1"></i></div>
+      <div class="pcard-body"><div class="pcard-tag">ASRS</div><div class="pcard-name">V710 / J74 Miniload ASRS</div><div class="pcard-client">SAS Automotive · 2023</div></div>
+    </a>
+    <a href="proje-detay.html" class="pcard">
+      <div class="pcard-thumb" style="background:#1a2620"><img src="https://www.bonumech.com/images/projects/autotruck/autoTurckImg1.png" alt="Auto Truck" onerror="this.style.display='none'"><i class="ti ti-truck" style="color:#3a9a6a;font-size:32px;display:none"></i></div>
+      <div class="pcard-body"><div class="pcard-tag">ANAHTAR TESLİM</div><div class="pcard-name">Auto Truck Loading System</div><div class="pcard-client">SAS Automotive · 2023</div></div>
+    </a>
+    <a href="proje-detay.html" class="pcard">
+      <div class="pcard-thumb" style="background:#25181e"><img src="https://www.bonumech.com/images/projects/ferrero/ferrero1.svg" alt="Ferrero" onerror="this.style.display='none'"><i class="ti ti-building-factory-2" style="color:#a06aaa;font-size:32px;display:none"></i></div>
+      <div class="pcard-body"><div class="pcard-tag">DEPO SİSTEMİ</div><div class="pcard-name">Otomatik Kapalı Depo Sistemi</div><div class="pcard-client">Ferrero · 2022</div></div>
+    </a>
   </div>
 </div>
 
+<!-- REFERENCES -->
+<div class="section">
+  <div class="sec-eye">REFERANSLAR</div>
+  <div class="sec-title">Birlikte çalıştığımız markalar</div>
+  <div class="sec-sub" style="margin-bottom:20px;">Otomotiv ve FMCG sektörlerindeki önde gelen firmalarla çalışıyoruz.</div>
+  <div class="ref-logos">
+    <div class="ref-logo">Ferrero</div>
+    <div class="ref-logo">SAS Automotive</div>
+    <div class="ref-logo">Ford Otosan</div>
+    <div class="ref-logo">Referans 4</div>
+    <div class="ref-logo">Referans 5</div>
+  </div>
+</div>
+
+<!-- CTA -->
 <div class="cta-section">
   <div>
-    <div class="cta-badge"><i class="ti ti-briefcase"></i> Kariyer fırsatları</div>
-    <div class="cta-title">Ekibimize katılmak ister misiniz?</div>
-    <div class="cta-sub">Mühendislik tutkusu olan, gelişmeye açık kişileri arıyoruz.</div>
+    <div class="cta-badge"><i class="ti ti-clock"></i> 48 saat içinde yanıt</div>
+    <div class="cta-title">Deponuzu otomasyona hazır mısınız?</div>
+    <div class="cta-sub">Ücretsiz danışmanlık alın — ihtiyaçlarınızı birlikte değerlendirelim.</div>
   </div>
   <div class="cta-actions">
-    <a href="iletisim.html" class="btn btn-primary" style="justify-content:center;">İletişime Geçin</a>
+    <a href="iletisim.html" class="btn btn-primary" style="justify-content:center;">Ücretsiz Teklif Alın</a>
+    <a href="tel:+902623496647" class="btn btn-outline" style="justify-content:center;">+90 262 349 66 47</a>
+    <a href="docs/Bonumech_Brosur.pdf" target="_blank" class="btn btn-outline" style="justify-content:center;border-color:#e8530a;color:#e8530a;"><i class="ti ti-file-download"></i> Broşürü İndir (PDF)</a>
+    <div class="cta-note">48 saat içinde geri dönüş garantisi</div>
   </div>
 </div>
 
 <div id="footer-placeholder"></div>
 <script src="js/common.js"></script>
-</div>
 </div>
 </body>
 </html>

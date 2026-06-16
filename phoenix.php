@@ -38,16 +38,16 @@ if (!function_exists('curl_init')) {
 /* ---------- Form değerleri (POST) veya ilk açılış varsayılanları ---------- */
 $run = isset($_POST['run']);
 $cfg = [
-    // Dokümandaki resmi giriş adresi:
-    'BASE_URL'   => trim($_POST['base_url'] ?? 'https://www.phoenixcontact.com/pxc-portal-login-external/SRM?vp=de&lang=de'),
+    // GÜNCEL adres (2022 dokümanı, OCI 4.0/5.0 PunchOut):
+    'BASE_URL'   => trim($_POST['base_url'] ?? 'https://punchout.phoenixcontact.com/gateway/v1/oci/handle'),
     'USERNAME'   => trim($_POST['username'] ?? ''),
     'PASSWORD'   =>      $_POST['password']  ?? '',
-    // Dokümanda SERVICE ve VENDOR "service"/"vendor" yer tutucu olarak geçiyor;
-    // Phoenix size gerçek değerlerini verdiyse buraya yazın, yoksa boş bırakın.
+    // SERVICE/VENDOR güncel punch-out'ta gerekmiyor; yine de boş geçilebilir.
     'SERVICE'    => trim($_POST['service']  ?? ''),
     'VENDOR'     => trim($_POST['vendor']   ?? ''),
-    // HOOK_URL: gerçek SRM gerekmez; sadece geri-dönüş adresi olarak bir yer.
-    'HOOK_URL'   => trim($_POST['hook_url'] ?? 'https://www.phoenixcontact.com/'),
+    // HOOK_URL: dokümanda genelde "SAPEVENT:POST". Sepet aktarımını YAKALAMAK isterseniz
+    // bunu kendi catcher sayfanıza (örn. http://localhost/catch.php) çevirin.
+    'HOOK_URL'   => trim($_POST['hook_url'] ?? 'SAPEVENT:POST'),
     'METHOD'     => (($_POST['http_method'] ?? 'GET') === 'POST') ? 'POST' : 'GET',
     'TIMEOUT'    => 45,
     'VERIFY_SSL' => !isset($_POST['no_ssl']),
@@ -408,10 +408,13 @@ function pick($r, $k) { return isset($r[$k]) ? htmlspecialchars($r[$k]) : ''; }
 <div class="wrap">
 
   <div class="warn">
-    <b>Önemli:</b> Phoenix'in bu arayüzü OCI <b>3.0</b>'dır ve Siemens'teki gibi makine-okunur fiyat döndüren
-    bir <code>VALIDATE</code> fonksiyonu <b>yoktur</b>. <code>PRODUCTDETAILS</code> ürünün web sayfasını (HTML)
-    açar; fiyat oradan <b>kazınır</b>. Bu, ancak hesabınız sayfada net fiyatı gösteriyorsa çalışır.
-    Bu yüzden önce <b>1) KEŞİF</b> modunu tek kodla (örn. <code>0402174</code>) çalıştırın; ne döndüğünü görelim.
+    <b>Önemli (2022 Phoenix dokümanı):</b> Phoenix yalnızca OCI <b>4.0 interaktif punch-out</b> sunar.
+    Dokümana göre OCI 5.0'ın <b>"Validation of a Product" (otomatik fiyat çekme), ürün detay ve arama
+    fonksiyonları DESTEKLENMİYOR</b>. Yani Siemens'teki gibi bir koda otomatik fiyat döndüren çağrı yoktur;
+    fiyatlar yalnızca insan sepeti doldurup "SAP'ye aktar" deyince <code>HOOK_URL</code>'e
+    <code>NEW_ITEM-*</code> alanları olarak POST edilir. Bu araç <b>KEŞİF</b> modunda punch-out adresinin
+    ne döndürdüğünü gösterir; gerçek toplu fiyat için Phoenix e-procurement ekibinden katalog/fiyat dosyası
+    (BMEcat/Excel) istemeniz gerekir.
   </div>
 
   <form method="post" class="card">

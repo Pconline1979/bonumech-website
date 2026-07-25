@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bonumech Uzak Destek — Görüntüleyici</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Bağlantı ekranı -->
+  <div id="connect-screen" class="screen">
+    <div class="card">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-name">Bonumech <em>Uzak Destek</em></span>
+      </div>
+      <p class="subtitle">Destek vereceğiniz makinenin ID ve şifresini girin.</p>
+
+      <label class="field">
+        <span>Ortak (Partner) ID</span>
+        <input id="host-id" inputmode="numeric" autocomplete="off" placeholder="örn. 123 456 789" />
+      </label>
+
+      <label class="field">
+        <span>Oturum Şifresi</span>
+        <input id="host-pass" inputmode="numeric" autocomplete="off" placeholder="6 haneli şifre" />
+      </label>
+
+      <button id="connect-btn" class="btn-primary">Bağlan</button>
+      <div id="connect-status" class="status"></div>
+
+      <p class="hint">Uzak makinede <strong>Bonumech Host</strong> uygulamasının açık olması gerekir.</p>
+    </div>
+  </div>
+
+  <!-- Uzak masaüstü ekranı -->
+  <div id="remote-screen" class="screen hidden">
+    <div class="toolbar">
+      <div class="toolbar-left">
+        <span class="brand-dot"></span>
+        <span id="session-label">Bağlanıyor…</span>
+      </div>
+      <div class="toolbar-right">
+        <span id="conn-quality" class="badge">—</span>
+        <label class="switch">
+          <input type="checkbox" id="control-toggle" checked>
+          <span>Kontrol</span>
+        </label>
+        <button id="fs-btn" class="btn-ghost" title="Tam ekran">⛶</button>
+        <button id="disconnect-btn" class="btn-danger">Bağlantıyı Kes</button>
+      </div>
+    </div>
+    <div class="stage" id="stage">
+      <video id="remote-video" autoplay playsinline></video>
+      <div id="overlay" class="overlay hidden"></div>
+    </div>
+  </div>
+
+  <script src="viewer.js"></script>
+</body>
+</html>

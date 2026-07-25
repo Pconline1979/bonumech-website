@@ -1,0 +1,30 @@
+{
+  "name": "bonumech-remote-host",
+  "version": "1.0.0",
+  "description": "Bonumech Remote Support - Windows host agent (screen share + input control)",
+  "main": "main.js",
+  "author": "Bonumech Teknoloji A.Ş.",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.0"
+  },
+  "devDependencies": {
+    "electron": "^31.3.1",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "com.bonumech.remotehost",
+    "productName": "Bonumech Host",
+    "files": ["**/*"],
+    "win": {
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}

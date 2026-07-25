@@ -42,3 +42,18 @@ body { background: var(--bg); color: var(--text); font-family: -apple-system, "S
 
 .note { margin-top: 24px; font-size: 12px; color: var(--muted); line-height: 1.6; }
 .note strong { color: var(--text); }
+
+/* --- Onay ekranı --- */
+.consent { margin-top: 20px; background: var(--panel); border: 1px solid var(--orange); border-radius: 14px; padding: 18px; }
+.consent-title { font-size: 15px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+.consent-text { font-size: 13px; color: var(--muted); line-height: 1.5; margin-bottom: 16px; }
+.consent-actions { display: flex; gap: 10px; }
+.btn-allow { flex: 1; background: var(--green); color: #06210f; border: none; border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-reject { flex: 1; background: transparent; color: var(--red); border: 1px solid var(--red); border-radius: 10px; padding: 12px; font-size: 14px; font-weight: 600; cursor: pointer; }
+.btn-allow:hover { filter: brightness(1.08); }
+.btn-reject:hover { background: rgba(255,69,58,.12); }
+.consent-timer { margin-top: 10px; font-size: 11px; color: var(--muted); text-align: center; }
+
+/* --- Anahtar --- */
+.toggle { display: flex; align-items: center; gap: 9px; margin-top: 18px; font-size: 12px; color: var(--muted); cursor: pointer; line-height: 1.4; }
+.toggle input { accent-color: var(--orange); width: 15px; height: 15px; flex: 0 0 auto; }

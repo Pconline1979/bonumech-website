@@ -9,12 +9,12 @@
 (() => {
   'use strict';
 
-  const ICE_SERVERS = [
+  // Varsayılan ICE; sunucu 'join-ok' ile gerçek yapılandırmayı (TURN dahil) gönderir.
+  const DEFAULT_ICE = [
     { urls: 'stun:stun.l.google.com:19302' },
     { urls: 'stun:stun1.l.google.com:19302' },
-    // Üretimde internet üzerinden erişim için bir TURN sunucusu eklenmesi önerilir:
-    // { urls: 'turn:turn.ornek.com:3478', username: '...', credential: '...' },
   ];
+  let iceServers = DEFAULT_ICE;
 
   // --- DOM ---
   const $ = (id) => document.getElementById(id);
@@ -82,12 +82,17 @@
 
         case 'join-ok':
           peerId = msg.peer;
-          setStatus('Bağlantı kuruluyor…', 'ok');
+          if (Array.isArray(msg.iceServers) && msg.iceServers.length) iceServers = msg.iceServers;
+          setStatus('Onay bekleniyor… (uzak kullanıcı bağlantıyı onaylamalı)', 'info');
           await setupPeer();
           break;
 
         case 'signal':
           await handleSignal(msg.payload);
+          break;
+
+        case 'rejected':
+          endSession('Bağlantı uzak kullanıcı tarafından reddedildi.');
           break;
 
         case 'peer-left':
@@ -116,7 +121,7 @@
   }
 
   async function setupPeer() {
-    pc = new RTCPeerConnection({ iceServers: ICE_SERVERS });
+    pc = new RTCPeerConnection({ iceServers });
 
     pc.onicecandidate = (e) => {
       if (e.candidate) {

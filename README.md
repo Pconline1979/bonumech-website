@@ -77,9 +77,18 @@ anahtarı ile kontrolü geçici olarak devre dışı bırakabilirsiniz.
 - Her oturum **6 haneli oturum şifresi** ile korunur; host'ta yeni şifre üretilebilir (⟳).
 - Üretim ortamında sunucuyu **HTTPS/WSS** (TLS) arkasında çalıştırın. `getDisplayMedia`
   ve pano gibi tarayıcı özellikleri güvenli bağlam (https) gerektirir.
+- **Bağlantı onayı:** Bir viewer katıldığında host makinesinde bir **onay ekranı** çıkar
+  (İzin ver / Reddet, 30 sn sonra otomatik ret). Gözetimsiz destek için host penceresindeki
+  **"Gözetimsiz erişim — otomatik onayla"** kutusu işaretlenebilir.
 - **NAT arkası internet erişimi** için bir **TURN sunucusu** eklemeniz gerekir
-  (örn. [coturn](https://github.com/coturn/coturn)). ICE ayarları `host.js` ve `viewer.js`
-  içindeki `ICE_SERVERS` listesindedir; yalnızca STUN ile katı NAT'larda bağlantı kurulamayabilir.
+  (örn. [coturn](https://github.com/coturn/coturn)). Sunucuyu şu ortam değişkenleriyle başlatın;
+  yapılandırma otomatik olarak host ve viewer'a dağıtılır (kod değişikliği gerekmez):
+
+  ```bash
+  TURN_URL="turn:turn.ornek.com:3478" TURN_USER="kullanici" TURN_PASS="parola" npm start
+  ```
+
+  Yalnızca STUN ile katı NAT'larda bağlantı kurulamayabilir.
 - Host uygulaması, karşı tarafa **tam fare/klavye kontrolü** verir. Yalnızca güvendiğiniz
   kişilere ID/şifre paylaşın ve oturum bitince host penceresini kapatın (tepsiden Çıkış).
 
@@ -87,13 +96,13 @@ anahtarı ile kontrolü geçici olarak devre dışı bırakabilirsiniz.
 
 ## Yol Haritası (sonraki adımlar)
 
-- [ ] TURN sunucusu entegrasyonu + yapılandırma dosyası
+- [x] TURN sunucusu yapılandırması (ortam değişkeni ile, sunucudan dağıtılır)
+- [x] Host tarafında "izin iste" onay ekranı (+ gözetimsiz otomatik onay)
 - [ ] Dosya transferi (WebRTC data channel)
 - [ ] Sohbet paneli
 - [ ] Çoklu monitör seçimi
 - [ ] Pano (clipboard) senkronizasyonu
 - [ ] Kalıcı ID (host cihaz kimliğini diske kaydeder)
-- [ ] Host tarafında "izin iste" onay ekranı (bağlantı öncesi kullanıcı onayı)
 
 ---
 

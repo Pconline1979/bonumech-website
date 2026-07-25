@@ -18,9 +18,32 @@ const { WebSocketServer } = require('ws');
 
 const PORT = process.env.PORT || 8080;
 
+/**
+ * ICE (STUN/TURN) yapılandırması. Ortam değişkenleri ile TURN eklenebilir:
+ *   TURN_URL   = turn:turn.ornek.com:3478   (virgülle birden fazla verilebilir)
+ *   TURN_USER  = kullanıcı
+ *   TURN_PASS  = parola
+ * Sunucu bu yapılandırmayı hem host'a hem viewer'a dağıtır; böylece kod değişmeden
+ * TURN devreye alınabilir.
+ */
+function buildIceServers() {
+  const servers = [
+    { urls: ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302'] },
+  ];
+  if (process.env.TURN_URL) {
+    const turn = { urls: process.env.TURN_URL.split(',').map((s) => s.trim()).filter(Boolean) };
+    if (process.env.TURN_USER) turn.username = process.env.TURN_USER;
+    if (process.env.TURN_PASS) turn.credential = process.env.TURN_PASS;
+    servers.push(turn);
+  }
+  return servers;
+}
+const ICE_SERVERS = buildIceServers();
+
 const app = express();
 app.use(express.static(path.join(__dirname, 'public')));
 app.get('/health', (_req, res) => res.json({ ok: true, hosts: hosts.size }));
+app.get('/ice-config', (_req, res) => res.json({ iceServers: ICE_SERVERS }));
 
 const server = http.createServer(app);
 const wss = new WebSocketServer({ server });
@@ -48,16 +71,24 @@ function send(connId, obj) {
   }
 }
 
-function unlink(ws) {
+// Bağlantı eşleşmesini bildirim göndermeden temizler.
+function clearLink(ws) {
   if (ws.peer != null) {
     const peer = conns.get(ws.peer);
     if (peer) {
       peer.peer = null;
       peer.busy = false;
-      send(ws.peer, { type: 'peer-left' });
     }
     ws.peer = null;
     ws.busy = false;
+  }
+}
+
+// Eşi bilgilendirerek (peer-left) eşleşmeyi sonlandırır.
+function unlink(ws) {
+  if (ws.peer != null) {
+    send(ws.peer, { type: 'peer-left' });
+    clearLink(ws);
   }
 }
 
@@ -87,7 +118,7 @@ wss.on('connection', (ws) => {
         const password = msg.password ? String(msg.password) : genPassword();
         ws.hostId = id;
         hosts.set(id, { connId, password });
-        send(connId, { type: 'registered', id, password });
+        send(connId, { type: 'registered', id, password, iceServers: ICE_SERVERS });
         break;
       }
 
@@ -128,7 +159,16 @@ wss.on('connection', (ws) => {
         hostWs.busy = true;
         ws.busy = true;
         send(host.connId, { type: 'peer-joined', peer: connId });
-        send(connId, { type: 'join-ok', peer: host.connId });
+        send(connId, { type: 'join-ok', peer: host.connId, iceServers: ICE_SERVERS });
+        break;
+      }
+
+      // --- Host bağlantı isteğini reddeder (onay ekranı) ---
+      case 'reject': {
+        if (ws.peer != null) {
+          send(ws.peer, { type: 'rejected' });
+          clearLink(ws);
+        }
         break;
       }
 

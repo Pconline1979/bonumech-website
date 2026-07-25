@@ -9,11 +9,10 @@
 (() => {
   'use strict';
 
-  const ICE_SERVERS = [
+  // Varsayılan ICE; sunucu 'registered' ile gerçek yapılandırmayı (TURN dahil) gönderir.
+  const DEFAULT_ICE = [
     { urls: 'stun:stun.l.google.com:19302' },
     { urls: 'stun:stun1.l.google.com:19302' },
-    // Üretim için TURN önerilir (internet üzerinden NAT geçişi):
-    // { urls: 'turn:turn.ornek.com:3478', username: '...', credential: '...' },
   ];
 
   const idValue = document.getElementById('id-value');
@@ -22,6 +21,13 @@
   const statusDot = document.querySelector('#status .dot');
   const localPreview = document.getElementById('local-preview');
   const newPassBtn = document.getElementById('new-pass');
+  const consentPanel = document.getElementById('consent');
+  const consentAllow = document.getElementById('consent-allow');
+  const consentReject = document.getElementById('consent-reject');
+  const consentTimer = document.getElementById('consent-timer');
+  const autoAllow = document.getElementById('auto-allow');
+
+  const CONSENT_TIMEOUT = 30; // saniye
 
   let ws = null;
   let pc = null;
@@ -30,6 +36,8 @@
   let myId = null;
   let peerId = null;
   let reconnectTimer = null;
+  let iceServers = DEFAULT_ICE;
+  let consentCountdown = null;
 
   function setStatus(text, dotClass) {
     statusText.textContent = text;
@@ -61,6 +69,7 @@
       switch (msg.type) {
         case 'registered':
           myId = msg.id;
+          if (Array.isArray(msg.iceServers) && msg.iceServers.length) iceServers = msg.iceServers;
           idValue.textContent = groupDigits(msg.id);
           passValue.textContent = groupDigits(msg.password);
           setStatus('Hazır — bağlantı bekleniyor', 'dot-ok');
@@ -73,8 +82,12 @@
 
         case 'peer-joined':
           peerId = msg.peer;
-          setStatus('Destek bağlanıyor…', 'dot-live');
-          await startSharing();
+          if (autoAllow.checked) {
+            setStatus('Bağlantı otomatik onaylandı…', 'dot-live');
+            await startSharing();
+          } else {
+            showConsent();
+          }
           break;
 
         case 'signal':
@@ -82,6 +95,7 @@
           break;
 
         case 'peer-left':
+          hideConsent();
           resetSession('Hazır — bağlantı bekleniyor', 'dot-ok');
           break;
       }
@@ -99,6 +113,40 @@
     reconnectTimer = setTimeout(() => connect(url), 3000);
   }
 
+  // --- Onay ekranı ---
+  function showConsent() {
+    setStatus('Bağlantı isteği — onayınız bekleniyor', 'dot-wait');
+    consentPanel.classList.remove('hidden');
+    let left = CONSENT_TIMEOUT;
+    consentTimer.textContent = `${left} sn içinde otomatik reddedilir`;
+    clearInterval(consentCountdown);
+    consentCountdown = setInterval(() => {
+      left -= 1;
+      consentTimer.textContent = `${left} sn içinde otomatik reddedilir`;
+      if (left <= 0) rejectConnection();
+    }, 1000);
+  }
+
+  function hideConsent() {
+    clearInterval(consentCountdown);
+    consentPanel.classList.add('hidden');
+  }
+
+  async function allowConnection() {
+    hideConsent();
+    setStatus('Destek bağlanıyor…', 'dot-live');
+    await startSharing();
+  }
+
+  function rejectConnection() {
+    hideConsent();
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      ws.send(JSON.stringify({ type: 'reject' }));
+    }
+    peerId = null;
+    setStatus('Bağlantı reddedildi — bağlantı bekleniyor', 'dot-ok');
+  }
+
   async function startSharing() {
     try {
       localStream = await navigator.mediaDevices.getDisplayMedia({
@@ -111,7 +159,7 @@
     }
     localPreview.srcObject = localStream;
 
-    pc = new RTCPeerConnection({ iceServers: ICE_SERVERS });
+    pc = new RTCPeerConnection({ iceServers });
 
     for (const track of localStream.getTracks()) {
       pc.addTrack(track, localStream);
@@ -164,6 +212,7 @@
   }
 
   function resetSession(text, dot) {
+    hideConsent();
     if (controlChannel) { try { controlChannel.close(); } catch {} controlChannel = null; }
     if (pc) { try { pc.close(); } catch {} pc = null; }
     if (localStream) { localStream.getTracks().forEach((t) => t.stop()); localStream = null; }
@@ -172,6 +221,9 @@
     window.hostAPI.reportState({ connected: false, id: myId });
     setStatus(text, dot);
   }
+
+  consentAllow.addEventListener('click', () => { allowConnection(); });
+  consentReject.addEventListener('click', () => { rejectConnection(); });
 
   newPassBtn.addEventListener('click', () => {
     if (ws && ws.readyState === WebSocket.OPEN) {

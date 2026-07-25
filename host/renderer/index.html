@@ -30,6 +30,23 @@
       <span id="status-text">Sunucuya bağlanılıyor…</span>
     </div>
 
+    <!-- Bağlantı onay ekranı (bir viewer katılınca görünür) -->
+    <div id="consent" class="consent hidden">
+      <div class="consent-title">Uzak destek bağlantısı isteniyor</div>
+      <div class="consent-text">Bir destek görevlisi bu makineyi görüntülemek ve
+        kontrol etmek istiyor. İzin veriyor musunuz?</div>
+      <div class="consent-actions">
+        <button id="consent-allow" class="btn-allow">İzin ver</button>
+        <button id="consent-reject" class="btn-reject">Reddet</button>
+      </div>
+      <div id="consent-timer" class="consent-timer"></div>
+    </div>
+
+    <label class="toggle">
+      <input type="checkbox" id="auto-allow">
+      <span>Gözetimsiz erişim — gelen bağlantıları otomatik onayla</span>
+    </label>
+
     <p class="note">Destek veren kişiye yukarıdaki <strong>ID</strong> ve <strong>şifreyi</strong>
       iletin. Oturum sırasında bu pencereyi kapatabilirsiniz; uygulama sistem tepsisinde çalışmaya devam eder.</p>
 

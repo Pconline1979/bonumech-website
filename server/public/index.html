@@ -42,17 +42,36 @@
       </div>
       <div class="toolbar-right">
         <span id="conn-quality" class="badge">—</span>
+        <select id="monitor-select" class="select" title="Monitör"></select>
+        <button id="clip-btn" class="btn-ghost" title="Panomu uzak makineye gönder">📋</button>
         <label class="switch">
           <input type="checkbox" id="control-toggle" checked>
           <span>Kontrol</span>
         </label>
+        <button id="panel-btn" class="btn-ghost" title="Sohbet & dosya">💬</button>
         <button id="fs-btn" class="btn-ghost" title="Tam ekran">⛶</button>
         <button id="disconnect-btn" class="btn-danger">Bağlantıyı Kes</button>
       </div>
     </div>
-    <div class="stage" id="stage">
-      <video id="remote-video" autoplay playsinline></video>
-      <div id="overlay" class="overlay hidden"></div>
+    <div class="workspace">
+      <div class="stage" id="stage">
+        <video id="remote-video" autoplay playsinline></video>
+        <div id="overlay" class="overlay hidden"></div>
+      </div>
+      <aside id="side-panel" class="side-panel hidden">
+        <div class="side-title">Sohbet</div>
+        <div id="chat-log" class="chat-log"></div>
+        <div class="chat-input">
+          <input id="chat-text" type="text" placeholder="Mesaj yazın…" maxlength="500" />
+          <button id="chat-send" class="mini-btn" title="Gönder">➤</button>
+        </div>
+        <div class="side-title">Dosya</div>
+        <div class="file-row">
+          <button id="send-file-btn" class="btn-file">📎 Dosya gönder</button>
+          <input id="file-input" type="file" style="display:none" />
+        </div>
+        <div id="file-status" class="file-status"></div>
+      </aside>
     </div>
   </div>
 

@@ -67,8 +67,18 @@ npm run dist       # dist/ altında NSIS installer oluşur
 ### 3) Viewer (destek veren)
 
 Tarayıcıda sunucu adresini açın → host'un **ID**'sini ve **şifresini** girin → **Bağlan**.
-Uzak ekran görünür; fare/klavye ile kontrol edebilirsiniz. Sağ üstteki **Kontrol**
-anahtarı ile kontrolü geçici olarak devre dışı bırakabilirsiniz.
+Uzak ekran görünür; fare/klavye ile kontrol edebilirsiniz.
+
+Araç çubuğu (sağ üst):
+- **Monitör** açılır listesi — çoklu monitörlü makinelerde ekran değiştirir.
+- **📋** — kendi panonuzu uzak makineye gönderir. (Host panosu değişince otomatik size gelir.)
+- **Kontrol** anahtarı — uzaktan kontrolü geçici olarak durdurur (yalnızca izleme).
+- **💬** — sohbet ve dosya transferi panelini açar/kapatır.
+- **⛶** — tam ekran.
+
+**Sohbet & dosya:** 💬 panelinden karşılıklı mesajlaşabilir ve dosya gönderebilirsiniz.
+Viewer'a gelen dosyalar tarayıcıdan indirilir; host'a gelen dosyalar **İndirilenler**
+klasörüne kaydedilir.
 
 ---
 
@@ -98,11 +108,14 @@ anahtarı ile kontrolü geçici olarak devre dışı bırakabilirsiniz.
 
 - [x] TURN sunucusu yapılandırması (ortam değişkeni ile, sunucudan dağıtılır)
 - [x] Host tarafında "izin iste" onay ekranı (+ gözetimsiz otomatik onay)
-- [ ] Dosya transferi (WebRTC data channel)
-- [ ] Sohbet paneli
-- [ ] Çoklu monitör seçimi
-- [ ] Pano (clipboard) senkronizasyonu
-- [ ] Kalıcı ID (host cihaz kimliğini diske kaydeder)
+- [x] Dosya transferi (WebRTC data channel, çift yönlü)
+- [x] Sohbet paneli (host ↔ viewer)
+- [x] Çoklu monitör seçimi (canlı geçiş + koordinat kalibrasyonu)
+- [x] Pano (clipboard) senkronizasyonu (çift yönlü)
+- [x] Kalıcı ID (host cihaz kimliğini diske kaydeder)
+- [ ] Ses aktarımı (mikrofon/sistem sesi)
+- [ ] Oturum kaydı (video)
+- [ ] Çoklu izleyici (birden fazla destek görevlisi)
 
 ---
 
@@ -110,7 +123,12 @@ anahtarı ile kontrolü geçici olarak devre dışı bırakabilirsiniz.
 
 - **Sinyalleşme protokolü** (JSON, WebSocket): `register` / `join` / `signal` / `peer-joined`
   / `peer-left` / `bye`. Bkz. `server/server.js`.
-- **Kontrol protokolü** (WebRTC data channel, JSON): fare `m/d/u/w`, klavye `kd/ku`.
-  Koordinatlar `[0,1]` normalize edilir; host gerçek çözünürlüğe ölçekler.
-  Bkz. `host/input.js` ve `server/public/viewer.js`.
+- **Kontrol kanalı** (`control` data channel, JSON): fare `m/d/u/w`, klavye `kd/ku`,
+  sohbet `chat`, pano `clip`, monitör listesi `screens`, monitör seçimi `setscreen`.
+  Koordinatlar `[0,1]` normalize edilir; host seçili monitörün sanal masaüstü
+  sınırlarına ölçekler (çoklu monitör offset'i dahil).
+- **Dosya kanalı** (`file` data channel): `meta` (JSON) → ikili parçalar (16 KB, geri-basınç
+  kontrollü) → `end`. Viewer'da indirilir, host'ta İndirilenler klasörüne yazılır.
 - **Girdi enjeksiyonu**: [`@nut-tree-fork/nut-js`](https://github.com/nut-tree/nut.js) (Windows).
+- **Kalıcı kimlik**: host, ID+şifreyi `userData/device-creds.json` içine kaydeder ve
+  yeniden başlatmada aynı kimlikle kaydolur.

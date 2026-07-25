@@ -24,6 +24,14 @@ keyboard.config.autoDelayMs = 0;
 let screenW = 1920;
 let screenH = 1080;
 
+// Paylaşılan monitörün sanal masaüstündeki sınırları {x,y,width,height}.
+// Çoklu monitörde ikincil ekranların offset'ini hesaba katmak için kullanılır.
+let bounds = null;
+
+function setBounds(b) {
+  bounds = b && b.width && b.height ? b : null;
+}
+
 async function refreshScreenSize() {
   try {
     screenW = await screen.width();
@@ -34,6 +42,15 @@ async function refreshScreenSize() {
 }
 refreshScreenSize();
 setInterval(refreshScreenSize, 5000);
+
+// Normalize [0,1] koordinatı gerçek (sanal masaüstü) piksele çevirir.
+function toPixel(nx, ny) {
+  const bx = bounds ? bounds.x : 0;
+  const by = bounds ? bounds.y : 0;
+  const bw = bounds ? bounds.width : screenW;
+  const bh = bounds ? bounds.height : screenH;
+  return { x: Math.round(bx + nx * bw), y: Math.round(by + ny * bh) };
+}
 
 const BUTTON = { 0: Button.LEFT, 1: Button.MIDDLE, 2: Button.RIGHT };
 
@@ -92,15 +109,13 @@ async function handle(ev) {
   try {
     switch (ev.t) {
       case 'm': {
-        const x = Math.round(ev.x * screenW);
-        const y = Math.round(ev.y * screenH);
-        await mouse.setPosition(new Point(x, y));
+        const p = toPixel(ev.x, ev.y);
+        await mouse.setPosition(new Point(p.x, p.y));
         break;
       }
       case 'd': {
-        const x = Math.round(ev.x * screenW);
-        const y = Math.round(ev.y * screenH);
-        await mouse.setPosition(new Point(x, y));
+        const p = toPixel(ev.x, ev.y);
+        await mouse.setPosition(new Point(p.x, p.y));
         await mouse.pressButton(BUTTON[ev.b] ?? Button.LEFT);
         break;
       }
@@ -130,4 +145,4 @@ async function handle(ev) {
   }
 }
 
-module.exports = { handle };
+module.exports = { handle, setBounds };

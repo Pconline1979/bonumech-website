@@ -30,7 +30,7 @@
       <span id="status-text">Sunucuya bağlanılıyor…</span>
     </div>
 
-    <!-- Bağlantı onay ekranı (bir viewer katılınca görünür) -->
+    <!-- Bağlantı onay ekranı -->
     <div id="consent" class="consent hidden">
       <div class="consent-title">Uzak destek bağlantısı isteniyor</div>
       <div class="consent-text">Bir destek görevlisi bu makineyi görüntülemek ve
@@ -47,10 +47,31 @@
       <span>Gözetimsiz erişim — gelen bağlantıları otomatik onayla</span>
     </label>
 
-    <p class="note">Destek veren kişiye yukarıdaki <strong>ID</strong> ve <strong>şifreyi</strong>
-      iletin. Oturum sırasında bu pencereyi kapatabilirsiniz; uygulama sistem tepsisinde çalışmaya devam eder.</p>
+    <!-- Oturum paneli (bağlıyken görünür): monitör + sohbet + dosya -->
+    <div id="session-panel" class="session-panel hidden">
+      <div class="panel-row">
+        <label class="panel-label" for="monitor-select">Paylaşılan monitör</label>
+        <select id="monitor-select" class="select"></select>
+      </div>
 
-    <!-- Ekran yakalama için gizli video (yayın kaynağı) -->
+      <div class="chat">
+        <div id="chat-log" class="chat-log"></div>
+        <div class="chat-input">
+          <input id="chat-text" type="text" placeholder="Mesaj yazın…" maxlength="500" />
+          <button id="chat-send" class="mini-btn" title="Gönder">➤</button>
+        </div>
+      </div>
+
+      <div class="file-row">
+        <button id="send-file-btn" class="btn-file">📎 Dosya gönder</button>
+        <input id="file-input" type="file" style="display:none" />
+        <span id="file-status" class="file-status"></span>
+      </div>
+    </div>
+
+    <p class="note">Destek veren kişiye yukarıdaki <strong>ID</strong> ve <strong>şifreyi</strong>
+      iletin. Uygulama pencere kapatılınca sistem tepsisinde çalışmaya devam eder.</p>
+
     <video id="local-preview" autoplay muted playsinline style="display:none"></video>
   </div>
 
